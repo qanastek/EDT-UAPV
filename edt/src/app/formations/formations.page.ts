@@ -36,7 +36,7 @@ export class FormationsPage implements OnInit {
   getDiplomes(): any {
     var diplomesUrl = "https://edt-api.univ-avignon.fr/app.php/api/elements";
     
-    this.http.get(diplomesUrl).subscribe((response) => {
+    this.http.get(diplomesUrl).subscribe((response: any) => {
         this.diplomes = response.results;
         console.log(this.diplomes);        
     });
