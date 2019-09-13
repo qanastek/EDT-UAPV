@@ -9,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class FormationsPage implements OnInit {
 
   constructor(
-    public api: ApiService
+    public API: ApiService
   ) { }
 
   ngOnInit() {
-    this.api.getDiplomes();
+    this.API.getAllPromos();
   }
 
   onChange() {

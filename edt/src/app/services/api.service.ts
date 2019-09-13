@@ -7,18 +7,41 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
   
-  public diplomes: diplomes;
+  public promos: diplomes;
+  public groupes: any;
+  public edt: any;
 
   constructor(
     private http: HttpClient
   ) { }
 
-  public getDiplomes(): any {
-    var diplomesUrl = "https://edt-api.univ-avignon.fr/app.php/api/elements";
+  public getAllPromos(): any {
+    var URL = "https://edt-api.univ-avignon.fr/app.php/api/elements";
     
-    this.http.get(diplomesUrl).subscribe((response: any) => {
-      this.diplomes = response.results;     
+    this.http.get(URL).subscribe((response: any) => {
+      this.promos = response.results;     
     });
+  }
+
+  public getGroupePromo(promo: string): any {
+    var URL = "https://edt-api.univ-avignon.fr/app.php/api/tdoptions/" + promo;
+    
+    this.http.get(URL).subscribe((response: any) => {
+      this.groupes = response.results;           
+    });
+  }
+
+  public getPromoEdt(promo: string): any {
+    var URL = "https://edt-api.univ-avignon.fr/app.php/api/events_promotion/" + promo;
+    
+    this.http.get(URL).subscribe((response: any) => {
+      this.edt = response.results;           
+    });
+  }
+
+  public getGroupsAndEdt(promo: string) {
+    this.getGroupePromo(promo);
+    this.getPromoEdt(promo);
   }
 
 }

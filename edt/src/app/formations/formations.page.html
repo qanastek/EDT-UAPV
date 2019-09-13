@@ -16,16 +16,16 @@
 
 <ion-content align-items-center>
 
-  <div *ngIf="!this.api.diplomes">
+  <div *ngIf="!this.API.promos">
     <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
     <p style="color: rgba(229, 229, 234); font-size: 2em;">Fill up the field</p>
   </div>
   
-  <div *ngIf="this.api.diplomes">
+  <div *ngIf="this.API.promos">
 
     <h1>Diplomes:</h1>
 
-    <div *ngFor="let section of this.api.diplomes">
+    <div *ngFor="let section of this.API.promos">
 
       <b>
         Section: {{section.letter}}
@@ -35,12 +35,15 @@
 
         <ion-item>
           <ion-label>
+
             <p>
               Name: {{diplome.name}}
             </p>
-            <p>
-              Code :{{diplome.code}}
-            </p>
+
+            <ion-button (click)="this.API.getGroupsAndEdt(diplome.code)">
+              Get Groups
+            </ion-button>
+
           </ion-label>
         </ion-item>
 
