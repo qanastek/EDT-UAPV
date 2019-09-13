@@ -18,4 +18,5 @@ Packages sympas:
 
 TODO:
 
-- [ ] Faire un service qui regroupe toutes les bariables contenant les JSON
+- [x] Faire un service qui regroupe toutes les variables contenant les JSON
+- [x] Faire un fichier par interface

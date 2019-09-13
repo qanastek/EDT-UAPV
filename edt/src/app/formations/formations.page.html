@@ -16,16 +16,16 @@
 
 <ion-content align-items-center>
 
-  <div *ngIf="!this.diplomes">
+  <div *ngIf="!this.api.diplomes">
     <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
     <p style="color: rgba(229, 229, 234); font-size: 2em;">Fill up the field</p>
   </div>
   
-  <div *ngIf="this.diplomes">
-    
+  <div *ngIf="this.api.diplomes">
+
     <h1>Diplomes:</h1>
 
-    <div *ngFor="let section of this.diplomes">
+    <div *ngFor="let section of this.api.diplomes">
 
       <b>
         Section: {{section.letter}}
