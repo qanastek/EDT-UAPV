@@ -1,0 +1,52 @@
+<ion-toolbar>
+
+  <!-- Searchbar with a custom debounce -->
+  <ion-searchbar
+    debounce="500"
+    placeholder="Entrée votre diplôme / filière"
+    autocomplete="on"
+    clearIcon="close"
+    color="search"
+    inputmode="text"
+    searchIcon="ios-funnel"
+    (ionChange)="this.onChange()"
+  ></ion-searchbar>
+
+</ion-toolbar>
+
+<ion-content align-items-center>
+
+  <div *ngIf="!this.diplomes">
+    <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
+    <p style="color: rgba(229, 229, 234); font-size: 2em;">Fill up the field</p>
+  </div>
+  
+  <div *ngIf="this.diplomes">
+    
+    <h1>Diplomes:</h1>
+
+    <div *ngFor="let section of this.diplomes">
+
+      <b>
+        Section: {{section.letter}}
+      </b>
+
+      <ion-list *ngFor="let diplome of section.names">
+
+        <ion-item>
+          <ion-label>
+            <p>
+              Name: {{diplome.name}}
+            </p>
+            <p>
+              Code :{{diplome.code}}
+            </p>
+          </ion-label>
+        </ion-item>
+
+      </ion-list>
+
+    </div>
+  </div>  
+
+</ion-content>

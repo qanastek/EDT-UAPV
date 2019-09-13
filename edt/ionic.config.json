@@ -1,0 +1,7 @@
+{
+  "name": "edt",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

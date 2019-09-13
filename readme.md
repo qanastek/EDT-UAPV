@@ -9,3 +9,13 @@
 * Elements (IDK WHAT THIS IS): https://edt-api.univ-avignon.fr/app.php/api/elements
 
 * L3 INFORMATIQUE: https://edt-api.univ-avignon.fr/app.php/api/events_promotion/2-L3IN
+
+Packages sympas:
+
+* https://www.npmjs.com/package/ion4-calendar
+* https://www.npmjs.com/package/@fullcalendar/angular
+* https://fullcalendar.io/docs/angular
+
+TODO:
+
+- [ ] Faire un service qui regroupe toutes les bariables contenant les JSON
