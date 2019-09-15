@@ -12,7 +12,8 @@ export class ApiService {
   */
   public promos: diplomes; // JSON des promotions
   public groupes: any; // JSON des groupes de cette promotion
-  public edt: any; // JSON de l'EDT de cette promotion
+  public promoEdt: any; // JSON de l'EDT de cette promotion
+  public currentGroup: any; // JSON du groupe choisi
 
   /**
     Enseignants
@@ -67,7 +68,9 @@ export class ApiService {
     var URL = "https://edt-api.univ-avignon.fr/app.php/api/tdoptions/" + promo;
     
     this.http.get(URL).subscribe((response: any) => {
-      this.groupes = response.results;           
+      this.groupes = response.results;   
+      console.log(this.groupes);
+              
     });
   }
 
@@ -79,12 +82,12 @@ export class ApiService {
     var URL = "https://edt-api.univ-avignon.fr/app.php/api/events_promotion/" + promo;
     
     this.http.get(URL).subscribe((response: any) => {
-      this.edt = response.results;           
+      this.promoEdt = response.results;           
     });
   }
 
   /**
-   * Lance les deux fonctions ci-dessus
+   * Lance la récupération des groupes ainsi que de l'EDT de la promo
    * @param promo 
    */
   public getGroupsAndEdt(promo: string) {
@@ -104,6 +107,18 @@ export class ApiService {
   }
 
   /**
+   * Récupère le JSON de l'EDT de l'UEO
+   */
+  public getEdtUeo(code: string): any {    
+    var URL = "https://edt-api.univ-avignon.fr/app.php/api/events_matiere/" + code;
+    
+    this.http.get(URL).subscribe((response: any) => {
+      this.ueoEdt = response.results;
+      console.log(this.ueoEdt);      
+    });
+  }
+
+  /**
    * Récupère le JSON de la liste des UE
    */
   public getUe(): any {
@@ -115,13 +130,38 @@ export class ApiService {
   }
 
   /**
-   * Récupère le JSON de la liste des UE
+   * Récupère le JSON de l'EDT de l'UE
+   */
+  public getEdtUe(code: string): any {    
+    var URL = "https://edt-api.univ-avignon.fr/app.php/api/events_matiere/" + code;
+    
+    this.http.get(URL).subscribe((response: any) => {
+      this.ueEdt = response.results;
+      console.log(this.ueEdt);      
+    });
+  }
+
+  /**
+   * Récupère le JSON de la liste des enseignants
    */
   public getEnseignants(): any {    
     var URL = "https://edt-api.univ-avignon.fr/app.php/api/enseignants";
     
     this.http.get(URL).subscribe((response: any) => {
       this.profs = response.results;           
+    });
+  }
+
+  /**
+   * Récupère le JSON de l'EDT de l'enseignant
+   */
+  public getEdtProf(code: string): any {    
+    var URL = "https://edt-api.univ-avignon.fr/app.php/api/events_enseignant/" + code;
+    
+    this.http.get(URL).subscribe((response: any) => {
+      this.profEdt = response.results;
+      console.log(URL);      
+      console.log(this.profEdt);      
     });
   }
 

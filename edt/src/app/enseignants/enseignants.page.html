@@ -1,51 +1,57 @@
 <ion-toolbar>
 
-  <!-- Searchbar with a custom debounce -->
   <ion-searchbar
     debounce="500"
-    placeholder="Entrée votre diplôme / filière"
+    placeholder="Entrée le nom de l'enseignant"
     autocomplete="on"
     clearIcon="close"
     color="search"
     inputmode="text"
     searchIcon="ios-funnel"
-    (ionChange)="this.onChange()"
+    [(ngModel)]="this.searchCurrent" 
   ></ion-searchbar>
 
 </ion-toolbar>
 
-<ion-content class="align-items-center">
 
-  <div *ngIf="!this.API.profs">
-    <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
-    <p style="color: rgba(229, 229, 234); font-size: 2em;">Fill up the field</p>
-  </div>
-  
-  <div *ngIf="this.API.profs">
-
-    <h1>Enseignants:</h1>
+<div *ngIf="this.API.profs">
+  <ion-list>
 
     <div *ngFor="let section of this.API.profs">
+      <div *ngFor="let prof of section.names">
+  
+          <div *ngIf="this.searchCurrent.length <= 0">
+            <ion-item (click)="this.API.getEdtProf(prof.uapvHarpege)">
+              <ion-label>
+    
+                <p>
+                  {{prof.name}}
+                </p>
+    
+              </ion-label>
+            </ion-item>
+          </div>
+    
+          <div *ngIf="this.searchCurrent.length > 0">
 
-      <b>
-        Lettre: {{section.letter}}
-      </b>
+            <!-- Si le nom de l'UE contient l'input -->
+            <ion-item
+              *ngIf="prof.name.toLowerCase().includes(this.searchCurrent.toLowerCase())"
+              (click)="this.API.getEdtProf(prof.uapvHarpege)"
+            >
+              <ion-label>
+    
+                <p>
+                  {{prof.name}}
+                </p>
+    
+              </ion-label>
+            </ion-item>
 
-      <ion-list *ngFor="let prof of section.names">
-
-        <ion-item>
-          <ion-label>
-
-            <p>
-              Name: {{prof.name}}
-            </p>
-
-          </ion-label>
-        </ion-item>
-
-      </ion-list>
-
+          </div>
+          
+      </div>
     </div>
-  </div>  
 
-</ion-content>
+  </ion-list>
+</div>

@@ -1,51 +1,65 @@
 <ion-toolbar>
 
-  <!-- Searchbar with a custom debounce -->
   <ion-searchbar
     debounce="500"
-    placeholder="Entrée votre diplôme / filière"
+    placeholder="Entrée votre UE"
     autocomplete="on"
     clearIcon="close"
     color="search"
     inputmode="text"
     searchIcon="ios-funnel"
-    (ionChange)="this.onChange()"
+    [(ngModel)]="this.searchCurrent"
   ></ion-searchbar>
 
 </ion-toolbar>
 
-<ion-content class="align-items-center">
+<ion-content class="align-items-center" fullscreen>
 
   <div *ngIf="!this.API.ue">
     <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
     <p style="color: rgba(229, 229, 234); font-size: 2em;">Fill up the field</p>
   </div>
-  
+
   <div *ngIf="this.API.ue">
+    <ion-list>
 
-    <h1>UE's:</h1>
+      <div *ngFor="let section of this.API.ue">
+        <div *ngFor="let ue of section.names">
+    
+            <div *ngIf="this.searchCurrent.length <= 0">
+              <ion-item (click)="this.API.getEdtUe(ue.code)">
+                <ion-label>
+      
+                  <p>
+                    {{ue.name}}
+                  </p>
+      
+                </ion-label>
+              </ion-item>
+            </div>
+      
+            <div *ngIf="this.searchCurrent.length > 0">
 
-    <div *ngFor="let section of this.API.ue">
+              <!-- Si le nom de l'UE contient l'input -->
+              <ion-item
+                *ngIf="ue.name.toLowerCase().includes(this.searchCurrent.toLowerCase())"
+                (click)="this.API.getEdtUe(ue.code)"
+              >
+                <ion-label>
+      
+                  <p>
+                    {{ue.name}}
+                  </p>
+      
+                </ion-label>
+              </ion-item>
 
-      <b>
-        Lettre: {{section.letter}}
-      </b>
+            </div>
+            
+        </div>
+      </div>
 
-      <ion-list *ngFor="let ue of section.names">
-
-        <ion-item>
-          <ion-label>
-
-            <p>
-              Name: {{ue.name}}
-            </p>
-
-          </ion-label>
-        </ion-item>
-
-      </ion-list>
-
-    </div>
-  </div>  
+    </ion-list>
+  </div>
 
 </ion-content>

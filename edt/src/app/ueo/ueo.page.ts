@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UeoPage implements OnInit {
 
+  public searchCurrent: string = "";
+
   constructor(
     public API: ApiService
   ) { }

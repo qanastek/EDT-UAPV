@@ -1,4 +1,3 @@
-import { Salle } from './../interfaces/salle';
 import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
 

@@ -1,6 +1,5 @@
 <ion-toolbar>
 
-  <!-- Searchbar with a custom debounce -->
   <ion-searchbar
     debounce="500"
     placeholder="Entrée votre diplôme / filière"
@@ -9,47 +8,106 @@
     color="search"
     inputmode="text"
     searchIcon="ios-funnel"
-    (ionChange)="this.onChange()"
+    [(ngModel)]="this.searchCurrent" 
   ></ion-searchbar>
 
 </ion-toolbar>
 
-<ion-content align-items-center>
+<ion-content class="align-items-center" fullscreen>
 
-  <div *ngIf="!this.API.promos">
-    <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
-    <p style="color: rgba(229, 229, 234); font-size: 2em;">Fill up the field</p>
-  </div>
-  
-  <div *ngIf="this.API.promos">
-
-    <h1>Diplomes:</h1>
-
-    <div *ngFor="let section of this.API.promos">
-
-      <b>
-        Section: {{section.letter}}
-      </b>
-
-      <ion-list *ngFor="let diplome of section.names">
-
-        <ion-item>
-          <ion-label>
-
-            <p>
-              Name: {{diplome.name}}
-            </p>
-
-            <ion-button (click)="this.API.getGroupsAndEdt(diplome.code)">
-              Get Groups
-            </ion-button>
-
-          </ion-label>
-        </ion-item>
-
-      </ion-list>
-
+    <div *ngIf="!this.API.promos">
+      <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
+      <p style="color: rgba(229, 229, 234); font-size: 2em;">Fill up the field</p>
     </div>
-  </div>  
+  
+    <!-- La partie des promotions -->
+    <div *ngIf="this.API.promos && !this.API.groupes">
+      <ion-list>
+  
+        <div *ngFor="let section of this.API.promos">
+          <div *ngFor="let diplome of section.names">
+      
+              <div *ngIf="this.searchCurrent.length <= 0">
+                <ion-item (click)="this.API.getGroupsAndEdt(diplome.code); this.searchCurrent = '';">
+                  <ion-label>
+        
+                    <p>
+                      {{diplome.name}}
+                    </p>
+        
+                  </ion-label>
+                </ion-item>
+              </div>
+        
+              <div *ngIf="this.searchCurrent.length > 0">
+  
+                <!-- Si le nom de l'UE contient l'input -->
+                <ion-item
+                  *ngIf="diplome.name.toLowerCase().includes(this.searchCurrent.toLowerCase())"
+                  (click)="this.API.getGroupsAndEdt(diplome.code); this.searchCurrent = '';"
+                >
+                  <ion-label>
+        
+                    <p>
+                      {{diplome.name}}
+                    </p>
+        
+                  </ion-label>
+                </ion-item>
+  
+              </div>
+              
+          </div>
+        </div>
+  
+      </ion-list>
+    </div>
 
-</ion-content>
+    <!-- La partie des groupes-->
+    <div *ngIf="this.API.promos && this.API.groupes && !this.API.currentGroup">
+      <ion-list>
+  
+        <div *ngFor="let groupe of this.API.groupes">
+      
+          <div *ngIf="this.searchCurrent.length <= 0">
+            <ion-item (click)="this.API.currentGroup = groupe; this.searchCurrent = '';">
+              <ion-label>
+    
+                <p>
+                  {{groupe.display}}
+                </p>
+    
+              </ion-label>
+            </ion-item>
+          </div>
+    
+          <div *ngIf="this.searchCurrent.length > 0">
+
+            <!-- Si le nom du groupe contient l'input -->
+            <ion-item
+              *ngIf="groupe.display.toLowerCase().includes(this.searchCurrent.toLowerCase())"
+              (click)="this.API.currentGroup = groupe; this.searchCurrent = '';"
+            >
+              <ion-label>
+    
+                <p>
+                  {{groupe.display}}
+                </p>
+    
+              </ion-label>
+            </ion-item>
+
+          </div>
+              
+        </div>
+  
+      </ion-list>
+    </div>
+
+    <div *ngIf="this.API.currentGroup">
+      <p>Current group:</p>
+      <p>{{this.API.currentGroup.display}}</p>
+      <p>{{this.API.currentGroup.code}}</p>
+    </div>
+  
+  </ion-content>
