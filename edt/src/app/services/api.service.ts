@@ -132,7 +132,7 @@ export class ApiService {
     var URL = "https://edt-api.univ-avignon.fr/app.php/api/salles";
     
     this.http.get(URL).subscribe((response: any) => {
-      this.salles = response.results;           
+      this.salles = response.results;
     });
   }
 
@@ -144,6 +144,7 @@ export class ApiService {
     
     this.http.get(URL).subscribe((response: any) => {
       this.salleEdt = response.results;
+      console.log(this.salleEdt);      
     });
   }
 

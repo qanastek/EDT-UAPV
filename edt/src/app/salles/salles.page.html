@@ -1,6 +1,7 @@
 <ion-toolbar>
 
   <!-- Searchbar with a custom debounce -->
+  <!-- (ionChange)="this.onChange()" -->
   <ion-searchbar
     debounce="500"
     placeholder="Entrée votre diplôme / filière"
@@ -9,47 +10,58 @@
     color="search"
     inputmode="text"
     searchIcon="ios-funnel"
-    (ionChange)="this.onChange()"
+    [(ngModel)]="this.searchCurrent" 
   ></ion-searchbar>
 
 </ion-toolbar>
 
-<ion-content class="align-items-center">
+<ion-content class="align-items-center" fullscreen>
 
   <div *ngIf="!this.API.salles">
     <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
     <p style="color: rgba(229, 229, 234); font-size: 2em;">Fill up the field</p>
   </div>
-  
+
   <div *ngIf="this.API.salles">
+    <ion-list>
 
-    <h1>Salles:</h1>
+      <div *ngFor="let section of this.API.salles">
+        <div *ngFor="let salle of section.names">
+    
+            <div *ngIf="this.searchCurrent.length <= 0">
+              <ion-item (click)="this.API.getEdtSalle(salle.code)">
+                <ion-label>
+      
+                  <p>
+                    {{salle.name}}
+                  </p>
+      
+                </ion-label>
+              </ion-item>
+            </div>
+      
+            <div *ngIf="this.searchCurrent.length > 0">
 
-    <div *ngFor="let section of this.API.salles">
+              <!-- Si le nom de la salle contient l'input -->
+              <ion-item
+                *ngIf="salle.name.toLowerCase().includes(this.searchCurrent.toLowerCase())"
+                (click)="this.API.getEdtSalle(salle.code)"
+              >
+                <ion-label>
+      
+                  <p>
+                    {{salle.name}}
+                  </p>
+      
+                </ion-label>
+              </ion-item>
 
-      <b>
-        {{section.letter}}
-      </b>
+            </div>
+            
+        </div>
+      </div>
 
-      <ion-list *ngFor="let salle of section.names">
-
-        <ion-item>
-          <ion-label>
-
-            <p>
-              {{salle.name}}
-            </p>
-
-            <ion-button (click)="this.API.getEdtSalle(salle.code)">
-              Get EDT
-            </ion-button>
-
-          </ion-label>
-        </ion-item>
-
-      </ion-list>
-
-    </div>
-  </div>  
+    </ion-list>
+  </div>
 
 </ion-content>

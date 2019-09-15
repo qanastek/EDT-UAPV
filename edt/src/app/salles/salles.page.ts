@@ -1,3 +1,4 @@
+import { Salle } from './../interfaces/salle';
 import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SallesPage implements OnInit {
 
+  public searchCurrent: string = "";
+
   constructor(
     public API: ApiService
   ) { }
@@ -16,10 +19,6 @@ export class SallesPage implements OnInit {
     if (this.API.salles === undefined) {
       this.API.getSalles();
     }
-  }
-
-  onChange() {
-    
   }
 
 }
