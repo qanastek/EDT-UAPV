@@ -1,3 +1,4 @@
+import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EnseignantsPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    public API: ApiService
+  ) { }
 
   ngOnInit() {
+    if (this.API.profs === undefined) {
+      this.API.getEnseignants();
+    }
+  }
+
+  onChange() {
+    
   }
 
 }

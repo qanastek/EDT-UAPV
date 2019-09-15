@@ -29,12 +29,12 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'cours',
+        path: 'ue',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../cours/cours.module').then(m => m.CoursPageModule)
+              import('../ue/ue.module').then(m => m.UePageModule)
           }
         ]
       },

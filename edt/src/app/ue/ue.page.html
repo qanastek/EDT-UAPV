@@ -16,28 +16,28 @@
 
 <ion-content class="align-items-center">
 
-  <div *ngIf="!this.API.ueo">
+  <div *ngIf="!this.API.ue">
     <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
     <p style="color: rgba(229, 229, 234); font-size: 2em;">Fill up the field</p>
   </div>
   
-  <div *ngIf="this.API.ueo">
+  <div *ngIf="this.API.ue">
 
-    <h1>UEO's:</h1>
+    <h1>UE's:</h1>
 
-    <div *ngFor="let section of this.API.ueo">
+    <div *ngFor="let section of this.API.ue">
 
       <b>
         Lettre: {{section.letter}}
       </b>
 
-      <ion-list *ngFor="let ueo of section.names">
+      <ion-list *ngFor="let ue of section.names">
 
         <ion-item>
           <ion-label>
 
             <p>
-              {{ueo.name}}
+              Name: {{ue.name}}
             </p>
 
           </ion-label>

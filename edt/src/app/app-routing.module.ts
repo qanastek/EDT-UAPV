@@ -8,9 +8,9 @@ const routes: Routes = [
   },
   { path: 'formations', loadChildren: './formations/formations.module#FormationsPageModule' },
   { path: 'enseignants', loadChildren: './enseignants/enseignants.module#EnseignantsPageModule' },
-  { path: 'cours', loadChildren: './cours/cours.module#CoursPageModule' },
   { path: 'ueo', loadChildren: './ueo/ueo.module#UeoPageModule' },
-  { path: 'salles', loadChildren: './salles/salles.module#SallesPageModule' }
+  { path: 'salles', loadChildren: './salles/salles.module#SallesPageModule' },
+  { path: 'ue', loadChildren: './ue/ue.module#UePageModule' }
 ];
 @NgModule({
   imports: [
