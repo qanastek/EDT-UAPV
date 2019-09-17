@@ -1,18 +1,3 @@
-<ion-toolbar>
-
-  <ion-searchbar
-    debounce="500"
-    placeholder="Entrée votre diplôme / filière"
-    autocomplete="on"
-    clearIcon="close"
-    color="search"
-    inputmode="text"
-    searchIcon="ios-funnel"
-    [(ngModel)]="this.searchCurrent" 
-  ></ion-searchbar>
-
-</ion-toolbar>
-
 <ion-content class="align-items-center" fullscreen>
 
     <div *ngIf="!this.API.promos">
@@ -22,6 +7,18 @@
   
     <!-- La partie des promotions -->
     <div *ngIf="this.API.promos && !this.API.groupes">
+      
+      <ion-searchbar
+      debounce="500"
+      placeholder="Entrée votre diplôme / filière"
+      autocomplete="on"
+      clearIcon="close"
+      color="search"
+      inputmode="text"
+      searchIcon="ios-funnel"
+      [(ngModel)]="this.searchCurrent" 
+      ></ion-searchbar>
+
       <ion-list>
   
         <div *ngFor="let section of this.API.promos">
@@ -64,50 +61,42 @@
     </div>
 
     <!-- La partie des groupes-->
-    <div *ngIf="this.API.promos && this.API.groupes && !this.API.currentGroup">
+    <div *ngIf="this.API.promos && this.API.groupes && !this.API.edtSelected">
+
       <ion-list>
-  
-        <div *ngFor="let groupe of this.API.groupes">
-      
-          <div *ngIf="this.searchCurrent.length <= 0">
-            <ion-item (click)="this.API.currentGroup = groupe; this.searchCurrent = '';">
-              <ion-label>
-    
-                <p>
-                  {{groupe.display}}
-                </p>
-    
-              </ion-label>
-            </ion-item>
-          </div>
-    
-          <div *ngIf="this.searchCurrent.length > 0">
-
-            <!-- Si le nom du groupe contient l'input -->
-            <ion-item
-              *ngIf="groupe.display.toLowerCase().includes(this.searchCurrent.toLowerCase())"
-              (click)="this.API.currentGroup = groupe; this.searchCurrent = '';"
-            >
-              <ion-label>
-    
-                <p>
-                  {{groupe.display}}
-                </p>
-    
-              </ion-label>
-            </ion-item>
-
-          </div>
-              
-        </div>
-  
+        <ion-item *ngFor="let groupe of this.API.groupes">
+          <ion-label>{{groupe.display}}</ion-label>
+          <!-- [(ngModel)]="" -->
+          <ion-checkbox 
+            slot="end"
+            checked="false"
+            (click)="this.API.insertGroup(groupe.code)"
+          ></ion-checkbox>
+        </ion-item>
       </ion-list>
+
+      <ion-button (click)="this.API.getGroupsEdt()">
+        Filtrer
+      </ion-button>
+
     </div>
 
-    <div *ngIf="this.API.currentGroup">
-      <p>Current group:</p>
-      <p>{{this.API.currentGroup.display}}</p>
-      <p>{{this.API.currentGroup.code}}</p>
+    <div *ngIf="this.API.edtSelected">
+
+      <div *ngFor="let item of this.API.edtSelected">
+
+        <ion-card>
+          <p>
+            {{item.title}}
+          </p>
+          
+          <p>
+            {{item.type}}
+          </p>
+        </ion-card>
+
+      </div>
+
     </div>
   
   </ion-content>

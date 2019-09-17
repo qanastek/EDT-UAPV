@@ -13,11 +13,14 @@
 - [x] Liste des UE: https://edt-api.univ-avignon.fr/app.php/api/matieres/UE
   - [x] EDT: https://edt-api.univ-avignon.fr/app.php/api/events_matiere/I-E05-5034
 - [x] Liste des Enseignants: https://edt-api.univ-avignon.fr/app.php/api/enseignants
-  - [ ] EDT: https://edt-api.univ-avignon.fr/app.php/api/events_enseignant/709
+  - [x] EDT: https://edt-api.univ-avignon.fr/app.php/api/events_enseignant/709
 
 - [x] Toutes les promotion: https://edt-api.univ-avignon.fr/app.php/api/elements
 - [x] Tout les groupe de cette promotion: https://edt-api.univ-avignon.fr/app.php/api/tdoptions/2-L3IN
 - [x] Emploi du temps de cette promotion (le filtre de groupe ce fait en local): https://edt-api.univ-avignon.fr/app.php/api/events_promotion/2-L3IN
+- [x] https://edt-api.univ-avignon.fr/app.php/api/events_tdoption/9756-9757-9758-9759-9761-9753-9754-9755
+
+- [x] Remplacer la search bar de groupe pour des checkbox de sortent à pouvoir afficher plusieurs groupes à la fois
 
 - [ ] Fullcalendar Angular
   - [ ] Installer fullcalendar angular
@@ -31,6 +34,10 @@
 - [ ] Factorisé le code de sorte à utilisé un component avec un input de type function
 - [ ] Mettre le lazy load des résultat de l'UI
   - [ ] Ou pagination
+  - [ ] Ou plutot: ion-infinite-scroll
+- [ ] Faire PWA
+
+- [ ] Jeter un coup d'oeil à nebular
 
 Packages sympas:
 
@@ -38,6 +45,7 @@ Packages sympas:
 * https://fullcalendar.io/docs/angular
 * https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin#3-usage
 * https://www.youtube.com/watch?v=uWhfwhN5IZc
+* https://www.npmjs.com/package/angular2-fullcalendar
 
 TODO:
 

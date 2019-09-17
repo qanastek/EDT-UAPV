@@ -13,7 +13,10 @@ export class ApiService {
   public promos: diplomes; // JSON des promotions
   public groupes: any; // JSON des groupes de cette promotion
   public promoEdt: any; // JSON de l'EDT de cette promotion
-  public currentGroup: any; // JSON du groupe choisi
+  public groupsSelected: any[] = []; // JSON des groupes choisis
+  public urlSelected: string; // URL de l'emploi du temps
+  public edtSelected: any; // L'emploi du temps des groupes selected
+
 
   /**
     Enseignants
@@ -186,6 +189,53 @@ export class ApiService {
       this.salleEdt = response.results;
       console.log(this.salleEdt);      
     });
+  }
+
+  public removeGroup(code: any) {
+    console.log("Remove inside");
+    
+    // TODO
+    // Remove the code from the groups array
+  }
+
+  public insertGroup(code: any) {
+
+    let insideArray = this.groupsSelected.indexOf(code) == -1;
+
+    if (insideArray) {
+      this.groupsSelected.push(code);
+    } else {
+      this.removeGroup(code);  
+    }
+
+  }
+  
+  public getGroupsEdt() {
+    let URL = "https://edt-api.univ-avignon.fr/app.php/api/events_tdoption/";
+    
+    var groups = "";
+
+    for (let i = 0; i < this.groupsSelected.length; i++) {
+
+      groups += this.groupsSelected[i];
+
+      if (i !== this.groupsSelected.length - 1) {
+        groups += "-";
+      }
+
+    }
+    
+    URL += groups;
+
+    console.log(URL); 
+    this.urlSelected = URL; 
+    
+    if (this.urlSelected) {
+      this.http.get(URL).subscribe((response: any) => {
+        this.edtSelected =  response.results;
+      });
+    }
+    
   }
 
 }
