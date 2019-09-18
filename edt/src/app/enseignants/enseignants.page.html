@@ -1,57 +1,81 @@
-<ion-toolbar>
+<ion-content>
 
-  <ion-searchbar
-    debounce="500"
-    placeholder="Entrée le nom de l'enseignant"
-    autocomplete="on"
-    clearIcon="close"
-    color="search"
-    inputmode="text"
-    searchIcon="ios-funnel"
-    [(ngModel)]="this.searchCurrent" 
-  ></ion-searchbar>
+  <div *ngIf="this.API.profs && !this.API.profEdt">
 
-</ion-toolbar>
+    <ion-searchbar
+      debounce="500"
+      placeholder="Entrée le nom de l'enseignant"
+      autocomplete="on"
+      clearIcon="close"
+      color="search"
+      inputmode="text"
+      searchIcon="ios-funnel"
+      [(ngModel)]="this.searchCurrent" 
+    ></ion-searchbar>
 
-
-<div *ngIf="this.API.profs">
-  <ion-list>
-
-    <div *ngFor="let section of this.API.profs">
-      <div *ngFor="let prof of section.names">
-  
-          <div *ngIf="this.searchCurrent.length <= 0">
-            <ion-item (click)="this.API.getEdtProf(prof.uapvHarpege)">
-              <ion-label>
+    <div *ngIf="this.searchCurrent">
+      <ion-list>
     
-                <p>
-                  {{prof.name}}
-                </p>
+        <div *ngFor="let section of this.API.profs">
+          <div *ngFor="let prof of section.names">
+      
+              <div *ngIf="this.searchCurrent.length <= 0">
+                <ion-item (click)="this.API.getEdtProf(prof.uapvHarpege)">
+                  <ion-label>
+        
+                    <p>
+                      {{prof.name}}
+                    </p>
+        
+                  </ion-label>
+                </ion-item>
+              </div>
+        
+              <div *ngIf="this.searchCurrent.length > 0">
     
-              </ion-label>
-            </ion-item>
+                <!-- Si le nom de l'UE contient l'input -->
+                <ion-item
+                  *ngIf="prof.name.toLowerCase().includes(this.searchCurrent.toLowerCase())"
+                  (click)="this.API.getEdtProf(prof.uapvHarpege)"
+                >
+                  <ion-label>
+        
+                    <p>
+                      {{prof.name}}
+                    </p>
+        
+                  </ion-label>
+                </ion-item>
+    
+              </div>
+              
           </div>
+        </div>
     
-          <div *ngIf="this.searchCurrent.length > 0">
-
-            <!-- Si le nom de l'UE contient l'input -->
-            <ion-item
-              *ngIf="prof.name.toLowerCase().includes(this.searchCurrent.toLowerCase())"
-              (click)="this.API.getEdtProf(prof.uapvHarpege)"
-            >
-              <ion-label>
-    
-                <p>
-                  {{prof.name}}
-                </p>
-    
-              </ion-label>
-            </ion-item>
-
-          </div>
-          
-      </div>
+      </ion-list>
     </div>
 
-  </ion-list>
-</div>
+  </div>
+    
+  <div *ngIf="this.API.profEdt" style="height: 100vh !important;">
+
+    <calendar
+      [eventSource]="this.API.loadCalendar(this.API.profEdt)"
+      [calendarMode]="'week'"
+      [currentDate]="this.calendar.currentDate"
+      [step]="30"
+      [startHour]="8"
+      [endHour]="21"
+      [startingDayWeek]="1"
+      [locale]="'en-GB'"
+      (onEventSelected)="this.clickClass($event)"
+    ></calendar>
+
+  </div>
+
+  <div *ngIf="!this.API.profs || !this.searchCurrent">
+    <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
+    <p style="color: rgba(229, 229, 234); font-size: 2em;">Remplir le champs</p>
+  </div>
+
+</ion-content>

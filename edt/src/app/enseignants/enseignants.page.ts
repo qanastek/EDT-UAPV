@@ -10,6 +10,10 @@ export class EnseignantsPage implements OnInit {
 
   public searchCurrent: string = "";
 
+  calendar = {
+    currentDate: new Date()
+  };
+
   constructor(
     public API: ApiService
   ) { }
@@ -19,9 +23,10 @@ export class EnseignantsPage implements OnInit {
       this.API.getEnseignants();
     }
   }
-
-  onChange() {
-    
+  
+  clickClass(event) {
+    console.log(event.title);   
+    // this.presentPopover(event);     
   }
 
 }

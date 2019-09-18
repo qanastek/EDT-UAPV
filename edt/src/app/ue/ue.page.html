@@ -1,10 +1,5 @@
 <ion-content class="align-items-center" fullscreen>
 
-  <div *ngIf="!this.API.ue">
-    <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
-    <p style="color: rgba(229, 229, 234); font-size: 2em;">Fill up the field</p>
-  </div>
-
   <div *ngIf="this.API.ue && !this.API.ueEdt">
     
     <ion-searchbar
@@ -18,45 +13,49 @@
       [(ngModel)]="this.searchCurrent"
     ></ion-searchbar>
 
-    <ion-list>
+    <!-- Si la search bar est remplit -->
+    <div *ngIf="this.searchCurrent">
+      <ion-list>
 
-      <div *ngFor="let section of this.API.ue">
-        <div *ngFor="let ue of section.names">
-    
-            <div *ngIf="this.searchCurrent.length <= 0">
-              <ion-item (click)="this.API.getEdtUe(ue.code)">
-                <ion-label>
+        <div *ngFor="let section of this.API.ue">
+          <div *ngFor="let ue of section.names">
       
-                  <p>
-                    {{ue.name}}
-                  </p>
-      
-                </ion-label>
-              </ion-item>
-            </div>
-      
-            <div *ngIf="this.searchCurrent.length > 0">
+              <div *ngIf="this.searchCurrent.length <= 0">
+                <ion-item (click)="this.API.getEdtUe(ue.code)">
+                  <ion-label>
+        
+                    <p>
+                      {{ue.name}}
+                    </p>
+        
+                  </ion-label>
+                </ion-item>
+              </div>
+        
+              <div *ngIf="this.searchCurrent.length > 0">
 
-              <!-- Si le nom de l'UE contient l'input -->
-              <ion-item
-                *ngIf="ue.name.toLowerCase().includes(this.searchCurrent.toLowerCase())"
-                (click)="this.API.getEdtUe(ue.code)"
-              >
-                <ion-label>
-      
-                  <p>
-                    {{ue.name}}
-                  </p>
-      
-                </ion-label>
-              </ion-item>
+                <!-- Si le nom de l'UE contient l'input -->
+                <ion-item
+                  *ngIf="ue.name.toLowerCase().includes(this.searchCurrent.toLowerCase())"
+                  (click)="this.API.getEdtUe(ue.code)"
+                >
+                  <ion-label>
+        
+                    <p>
+                      {{ue.name}}
+                    </p>
+        
+                  </ion-label>
+                </ion-item>
 
-            </div>
-            
-        </div>
-      </div>      
+              </div>
+              
+          </div>
+        </div>      
 
-    </ion-list>
+      </ion-list>
+    </div>
+
   </div>
 
   <div *ngIf="this.API.ueEdt" style="height: 100vh !important;">
@@ -73,6 +72,11 @@
       (onEventSelected)="this.clickClass($event)"
     ></calendar>
 
+  </div>
+
+  <div *ngIf="!this.API.ue || !this.searchCurrent">
+    <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
+    <p style="color: rgba(229, 229, 234); font-size: 2em;">Remplir le champs</p>
   </div>
 
 </ion-content>
