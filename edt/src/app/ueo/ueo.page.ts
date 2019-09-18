@@ -9,6 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class UeoPage implements OnInit {
 
   public searchCurrent: string = "";
+  
+  calendar = {
+    currentDate: new Date()
+  };
 
   constructor(
     public API: ApiService
@@ -19,9 +23,10 @@ export class UeoPage implements OnInit {
       this.API.getUeo();
     }
   }
-
-  onChange() {
-    
+  
+  clickClass(event) {
+    console.log(event.title);   
+    // this.presentPopover(event);     
   }
 
 }

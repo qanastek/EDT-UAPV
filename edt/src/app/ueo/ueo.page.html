@@ -1,17 +1,3 @@
-<ion-toolbar>
-
-  <ion-searchbar
-    debounce="500"
-    placeholder="Entrée votre UEO"
-    autocomplete="on"
-    clearIcon="close"
-    color="search"
-    inputmode="text"
-    searchIcon="ios-funnel"
-    [(ngModel)]="this.searchCurrent"
-  ></ion-searchbar>
-
-</ion-toolbar>
 
 <ion-content class="align-items-center" fullscreen>
 
@@ -20,7 +6,19 @@
     <p style="color: rgba(229, 229, 234); font-size: 2em;">Fill up the field</p>
   </div>
 
-  <div *ngIf="this.API.ueo">
+  <div *ngIf="this.API.ueo && !this.API.ueoEdt">
+    
+    <ion-searchbar
+      debounce="500"
+      placeholder="Entrée votre UEO"
+      autocomplete="on"
+      clearIcon="close"
+      color="search"
+      inputmode="text"
+      searchIcon="ios-funnel"
+      [(ngModel)]="this.searchCurrent"
+    ></ion-searchbar>
+
     <ion-list>
 
       <div *ngFor="let section of this.API.ueo">
@@ -57,9 +55,25 @@
             </div>
             
         </div>
-      </div>
+      </div>      
 
     </ion-list>
+  </div>
+  
+  <div *ngIf="this.API.ueoEdt" style="height: 100vh !important;">
+
+    <calendar
+      [eventSource]="this.API.loadCalendar(this.API.ueoEdt)"
+      [calendarMode]="'week'"
+      [currentDate]="this.calendar.currentDate"
+      [step]="30"
+      [startHour]="8"
+      [endHour]="21"
+      [startingDayWeek]="1"
+      [locale]="'en-GB'"
+      (onEventSelected)="this.clickClass($event)"
+    ></calendar>
+
   </div>
 
 </ion-content>

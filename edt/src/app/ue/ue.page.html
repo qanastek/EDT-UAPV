@@ -5,7 +5,7 @@
     <p style="color: rgba(229, 229, 234); font-size: 2em;">Fill up the field</p>
   </div>
 
-  <div *ngIf="this.API.ue">
+  <div *ngIf="this.API.ue && !this.API.ueEdt">
     
     <ion-searchbar
       debounce="500"
@@ -20,61 +20,59 @@
 
     <ion-list>
 
-      <div *ngIf="this.API.ue && !this.API.ueEdt" >
-        <div *ngFor="let section of this.API.ue">
-          <div *ngFor="let ue of section.names">
-      
-              <div *ngIf="this.searchCurrent.length <= 0">
-                <ion-item (click)="this.API.getEdtUe(ue.code)">
-                  <ion-label>
-        
-                    <p>
-                      {{ue.name}}
-                    </p>
-        
-                  </ion-label>
-                </ion-item>
-              </div>
-        
-              <div *ngIf="this.searchCurrent.length > 0">
-
-                <!-- Si le nom de l'UE contient l'input -->
-                <ion-item
-                  *ngIf="ue.name.toLowerCase().includes(this.searchCurrent.toLowerCase())"
-                  (click)="this.API.getEdtUe(ue.code)"
-                >
-                  <ion-label>
-        
-                    <p>
-                      {{ue.name}}
-                    </p>
-        
-                  </ion-label>
-                </ion-item>
-
-              </div>
-              
-          </div>
-        </div>
-      </div>
-
-      <div *ngIf="this.API.ueEdt" style="height: 100vh !important;">
-
-        <calendar
-          [eventSource]="this.API.loadCalendar(this.API.ueEdt)"
-          [calendarMode]="'week'"
-          [currentDate]="this.calendar.currentDate"
-          [step]="30"
-          [startHour]="8"
-          [endHour]="21"
-          [startingDayWeek]="1"
-          [locale]="'en-GB'"
-          (onEventSelected)="this.clickClass($event)"
-        ></calendar>
+      <div *ngFor="let section of this.API.ue">
+        <div *ngFor="let ue of section.names">
     
-      </div>
+            <div *ngIf="this.searchCurrent.length <= 0">
+              <ion-item (click)="this.API.getEdtUe(ue.code)">
+                <ion-label>
+      
+                  <p>
+                    {{ue.name}}
+                  </p>
+      
+                </ion-label>
+              </ion-item>
+            </div>
+      
+            <div *ngIf="this.searchCurrent.length > 0">
+
+              <!-- Si le nom de l'UE contient l'input -->
+              <ion-item
+                *ngIf="ue.name.toLowerCase().includes(this.searchCurrent.toLowerCase())"
+                (click)="this.API.getEdtUe(ue.code)"
+              >
+                <ion-label>
+      
+                  <p>
+                    {{ue.name}}
+                  </p>
+      
+                </ion-label>
+              </ion-item>
+
+            </div>
+            
+        </div>
+      </div>      
 
     </ion-list>
+  </div>
+
+  <div *ngIf="this.API.ueEdt" style="height: 100vh !important;">
+
+    <calendar
+      [eventSource]="this.API.loadCalendar(this.API.ueEdt)"
+      [calendarMode]="'week'"
+      [currentDate]="this.calendar.currentDate"
+      [step]="30"
+      [startHour]="8"
+      [endHour]="21"
+      [startingDayWeek]="1"
+      [locale]="'en-GB'"
+      (onEventSelected)="this.clickClass($event)"
+    ></calendar>
+
   </div>
 
 </ion-content>
