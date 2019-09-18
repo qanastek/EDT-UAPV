@@ -10,6 +10,13 @@ export class FormationsPage implements OnInit {
 
   public searchCurrent: string = "";
 
+  // eventSource = this.API.loadCalendar(this.API.edtSelected);
+  eventSource = [];
+
+  calendar = {
+    currentDate: new Date()
+  };
+
   constructor(
     public API: ApiService
   ) { }
@@ -18,8 +25,8 @@ export class FormationsPage implements OnInit {
     this.API.getAllPromos();
   }
 
-  onChange() {
-    
+  clickClass(event) {
+    console.log(event.title);        
   }
 
 }

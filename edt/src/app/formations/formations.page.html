@@ -81,21 +81,20 @@
 
     </div>
 
-    <div *ngIf="this.API.edtSelected">
+    <div *ngIf="this.API.edtSelected" style="height: 100vh !important;">
 
-      <div *ngFor="let item of this.API.edtSelected">
-
-        <ion-card>
-          <p>
-            {{item.title}}
-          </p>
-          
-          <p>
-            {{item.type}}
-          </p>
-        </ion-card>
-
-      </div>
+      <!--  [markDisabled]="disableWeekEnd" -->
+      <calendar
+        [eventSource]="this.API.loadCalendar(this.API.edtSelected)"
+        [calendarMode]="'week'"
+        [currentDate]="this.calendar.currentDate"
+        [step]="30"
+        [startHour]="8"
+        [endHour]="21"
+        [startingDayWeek]="1"
+        [locale]="'en-GB'"
+        (onEventSelected)="this.clickClass($event)"
+      ></calendar>
 
     </div>
   

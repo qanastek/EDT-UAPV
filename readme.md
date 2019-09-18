@@ -22,10 +22,10 @@
 
 - [x] Remplacer la search bar de groupe pour des checkbox de sortent à pouvoir afficher plusieurs groupes à la fois
 
-- [ ] Fullcalendar Angular
-  - [ ] Installer fullcalendar angular
-  - [ ] Faire marché en fake
-  - [ ] Faire marché avec les vrais EDT
+- [x] Fullcalendar Angular
+  - [x] Installer fullcalendar angular
+  - [x] Faire marché en fake
+  - [x] Faire marché avec les vrais EDT
 
 - [ ] Send GET request only if internet is ON
 - [ ] Faire le system de caching avec la vérification de date
@@ -36,6 +36,8 @@
   - [ ] Ou pagination
   - [ ] Ou plutot: ion-infinite-scroll
 - [ ] Faire PWA
+- [ ] Ajouter popup
+- [ ] Ajouter cours restants
 
 - [ ] Jeter un coup d'oeil à nebular
 
@@ -47,7 +49,11 @@ Packages sympas:
 * https://www.youtube.com/watch?v=uWhfwhN5IZc
 * https://www.npmjs.com/package/angular2-fullcalendar
 
+* https://www.npmjs.com/package/ionic2-calendar
+* https://www.youtube.com/watch?v=uWhfwhN5IZc
+
 TODO:
 
 - [x] Faire un service qui regroupe toutes les variables contenant les JSON
 - [x] Faire un fichier par interface
+- [ ] Fix calendar height

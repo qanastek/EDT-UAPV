@@ -238,4 +238,22 @@ export class ApiService {
     
   }
 
+  public loadCalendar(edt: any) {
+    var send = [];
+
+    this.edtSelected.forEach(item => {
+      
+      send.push({
+        title: item.type + " | " + item.title,
+        startTime: new Date(item.start),
+        endTime: new Date(item.end),
+        allDay: false,
+        desc: item.memo
+      });
+      
+    });
+    
+    return send;
+  }
+
 }
