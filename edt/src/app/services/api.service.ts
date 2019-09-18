@@ -72,7 +72,6 @@ export class ApiService {
     
     this.http.get(URL).subscribe((response: any) => {
       this.groupes = response.results;   
-      console.log(this.groupes);
               
     });
   }
@@ -116,8 +115,7 @@ export class ApiService {
     var URL = "https://edt-api.univ-avignon.fr/app.php/api/events_matiere/" + code;
     
     this.http.get(URL).subscribe((response: any) => {
-      this.ueoEdt = response.results;
-      console.log(this.ueoEdt);      
+      this.ueoEdt = response.results;   
     });
   }
 
@@ -139,8 +137,7 @@ export class ApiService {
     var URL = "https://edt-api.univ-avignon.fr/app.php/api/events_matiere/" + code;
     
     this.http.get(URL).subscribe((response: any) => {
-      this.ueEdt = response.results;
-      console.log(this.ueEdt);      
+      this.ueEdt = response.results;   
     });
   }
 
@@ -163,8 +160,7 @@ export class ApiService {
     
     this.http.get(URL).subscribe((response: any) => {
       this.profEdt = response.results;
-      console.log(URL);      
-      console.log(this.profEdt);      
+      console.log(URL); 
     });
   }
 
@@ -187,15 +183,16 @@ export class ApiService {
     
     this.http.get(URL).subscribe((response: any) => {
       this.salleEdt = response.results;
-      console.log(this.salleEdt);      
     });
   }
 
   public removeGroup(code: any) {
-    console.log("Remove inside");
+    let index = this.groupsSelected.indexOf(code);
     
-    // TODO
-    // Remove the code from the groups array
+    if (index > -1) {
+      this.groupsSelected.splice(index, 1);
+    }
+    
   }
 
   public insertGroup(code: any) {
@@ -241,7 +238,7 @@ export class ApiService {
   public loadCalendar(edt: any) {
     var send = [];
 
-    this.edtSelected.forEach(item => {
+    edt.forEach(item => {
       
       send.push({
         title: item.type + " | " + item.title,

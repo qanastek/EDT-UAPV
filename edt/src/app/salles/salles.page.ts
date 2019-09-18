@@ -10,6 +10,10 @@ export class SallesPage implements OnInit {
 
   public searchCurrent: string = "";
 
+  calendar = {
+    currentDate: new Date()
+  };
+
   constructor(
     public API: ApiService
   ) { }
@@ -18,6 +22,11 @@ export class SallesPage implements OnInit {
     if (this.API.salles === undefined) {
       this.API.getSalles();
     }
+  }
+  
+  clickClass(event) {
+    console.log(event.title);   
+    // this.presentPopover(event);     
   }
 
 }

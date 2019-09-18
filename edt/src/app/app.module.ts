@@ -14,8 +14,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgCalendarModule  } from 'ionic2-calendar';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [
+    AppComponent
+  ],
+  entryComponents: [
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,

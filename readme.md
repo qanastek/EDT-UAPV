@@ -37,7 +37,7 @@
   - [ ] Ou plutot: ion-infinite-scroll
 - [ ] Faire PWA
 - [ ] Ajouter popup
-- [ ] Ajouter cours restants
+- [ ] Ajouter cours restants avant la fin de l'année
 
 - [ ] Jeter un coup d'oeil à nebular
 
@@ -56,4 +56,5 @@ TODO:
 
 - [x] Faire un service qui regroupe toutes les variables contenant les JSON
 - [x] Faire un fichier par interface
-- [ ] Fix calendar height
+- [x] Fix calendar height
+- [x] Faire le remove()
