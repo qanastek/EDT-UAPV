@@ -71,5 +71,8 @@ TODO:
 - [x] Fix quand il n'y à pas de groupes choisis
 - [ ] Faire le css de la vue month
 - [ ] Faire le css de la vue day
-- [ ] Créer un système de favoris
+- [x] Créer un système de favoris
+- [ ] Pouvoir ajouter un favoris
 - [ ] Mettre un ion-refresher pour l'EDT du favoris
+- [ ] Work on page loading
+- [ ] Mettre un wait until at least 3/4 letter to searching (talking about searchbar)

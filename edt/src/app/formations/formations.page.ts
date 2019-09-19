@@ -42,7 +42,7 @@ export class FormationsPage implements OnInit {
 
   goToGroups(code: any) {
     this.searchCurrent = '';
-    this.API.getGroupsAndEdt(code);
+    this.API.getGroupePromo(code);
         
     this.router.navigate(["groups"]);
   }
@@ -61,6 +61,10 @@ export class FormationsPage implements OnInit {
       this.router.navigate(["edt", "formations"]);     
     });   
 
+  }
+
+  addFav() {
+    this.router.navigate(["add-fav"]);
   }
 
   showFav() {

@@ -67,14 +67,13 @@ export class ApiService {
 
   /**
    * Récupère le JSON des groupes pour une promotion spécifique
-   * @param promo 
+   * @param code 
    */
-  public getGroupePromo(promo: string): any {
-    var URL = "https://edt-api.univ-avignon.fr/app.php/api/tdoptions/" + promo;
+  public getGroupePromo(code: string): any {
+    var URL = "https://edt-api.univ-avignon.fr/app.php/api/tdoptions/" + code;
     
     this.http.get(URL).subscribe((response: any) => {
-      this.groupes = response.results;   
-              
+      this.groupes = response.results;                 
     });
   }
 
@@ -88,15 +87,6 @@ export class ApiService {
     this.http.get(URL).subscribe((response: any) => {
       this.promoEdt = response.results;           
     });
-  }
-
-  /**
-   * Lance la récupération des groupes ainsi que de l'EDT de la promo
-   * @param promo 
-   */
-  public getGroupsAndEdt(promo: string) {
-    this.getGroupePromo(promo);
-    this.getPromoEdt(promo); 
   }
 
   /**

@@ -46,36 +46,20 @@
     
           <div *ngFor="let section of this.API.promos">
             <div *ngFor="let diplome of section.names">
-        
-                <div *ngIf="this.searchCurrent.length <= 0">
-                  <ion-item (click)="this.API.getGroupsAndEdt(diplome.code); this.searchCurrent = '';">
-                    <ion-label>
-          
-                      <p>
-                        {{diplome.name}}
-                      </p>
-          
-                    </ion-label>
-                  </ion-item>
-                </div>
-          
-                <div *ngIf="this.searchCurrent.length > 0">
     
-                  <!-- Si le nom de l'UE contient l'input -->
-                  <ion-item
-                    *ngIf="diplome.name.toLowerCase().includes(this.searchCurrent.toLowerCase())"
-                    (click)="this.goToGroups(diplome.code)"
-                  >
-                    <ion-label>
-          
-                      <p>
-                        {{diplome.name}}
-                      </p>
-          
-                    </ion-label>
-                  </ion-item>
-    
-                </div>
+              <!-- Si le nom de l'UE contient l'input -->
+              <ion-item
+                *ngIf="diplome.name.toLowerCase().includes(this.searchCurrent.toLowerCase()) || this.searchCurrent.length <= 0"
+                (click)="this.goToGroups(diplome.code)"
+              >
+                <ion-label>
+      
+                  <p>
+                    {{diplome.name}}
+                  </p>
+      
+                </ion-label>
+              </ion-item>
                 
             </div>
           </div>
@@ -84,12 +68,16 @@
       </div>
     </div>
 
+    <!-- Favoris -->
     <div [hidden]="this.tab !== 1">
 
       <ion-list>   
         <!-- Multi-line sliding item with icon options on both sides -->
-        <ion-item-sliding id="item100">
-          <ion-item *ngFor="let favoris of testFavoris" (click)="loadEdt(favoris.url)">
+        <ion-item-sliding>
+          <ion-item *ngFor="let favoris of testFavoris" (click)="loadEdt(favoris.url)" ion-activatable>
+
+            <!-- Effet comme un boutton -->
+            <ion-ripple-effect></ion-ripple-effect>
 
             <ion-label text-wrap>
               
@@ -118,6 +106,10 @@
 
         </ion-item-sliding>
       </ion-list>
+
+      <ion-button expand="block" color="primary" size="large" (click)="this.addFav()">
+        Ajouter un favori
+      </ion-button>
 
     </div>
   

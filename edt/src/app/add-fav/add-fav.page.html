@@ -1,0 +1,75 @@
+<ion-content>
+
+  <ion-searchbar
+  debounce="500"
+  placeholder="Entrée votre diplôme / filière"
+  autocomplete="on"
+  clearIcon="close"
+  color="search"
+  inputmode="text"
+  searchIcon="ios-funnel"
+  [(ngModel)]="this.searchCurrent" 
+  ></ion-searchbar>
+
+  <div *ngIf="!this.promos" style="text-align: center;">
+    <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
+    <p style="color: rgba(229, 229, 234); font-size: 2em;">
+      Chargement...
+    </p>
+  </div>
+
+  <!-- La partie des promotions -->
+  <div *ngIf="this.promos && !this.groupes">
+  
+    <ion-list>
+
+      <div *ngFor="let section of this.promos">
+        <div *ngFor="let diplome of section.names">
+
+          <!-- Si le nom de l'UE contient l'input -->
+          <ion-item
+            *ngIf="diplome.name.toLowerCase().includes(this.searchCurrent.toLowerCase()) || this.searchCurrent.length <= 0"
+            (click)="this.goToGroups(diplome.code, diplome.name)"
+          >
+            <ion-label>
+  
+              <p>
+                {{diplome.name}}
+              </p>
+  
+            </ion-label>
+          </ion-item>
+            
+        </div>
+      </div>
+
+    </ion-list>
+  </div>
+
+  <div *ngIf="this.groupes">
+
+    <ion-list>
+      <ion-item *ngFor="let groupe of this.groupes">
+        
+        <ion-label>{{groupe.display}}</ion-label>
+
+        <ion-checkbox 
+          slot="end"
+          checked="false"
+          (click)="this.insertGroup(groupe.code, groupe.display)"
+        ></ion-checkbox>
+
+      </ion-item>
+    </ion-list>
+
+    <p *ngIf="this.groupsSelected.length <= 0 && this.statutEmpty" style="color: red;">
+      Veuillez remplir au moins un champ
+    </p>
+
+    <ion-button (click)="this.insertFav()">
+      Ajouter
+    </ion-button>
+
+  </div>
+
+</ion-content>

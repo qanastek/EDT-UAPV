@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { NgCalendarModule  } from 'ionic2-calendar';
 
+import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+import { SQLite } from '@ionic-native/sqlite/ngx';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -29,7 +32,9 @@ import { NgCalendarModule  } from 'ionic2-calendar';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    SQLite,
+    SQLitePorter
   ],
   bootstrap: [AppComponent]
 })
