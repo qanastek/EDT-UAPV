@@ -32,6 +32,7 @@
 - [ ] A chaque recherche enregistrer celle-ci dans une table de sorte à pouvoir savoir quelle est la recherche la plus chercher et la mêttre en tête de resultat
 
 - [ ] Factorisé le code de sorte à utilisé un component avec un input de type function
+  - [x] Faire facto de EDT
 - [ ] Mettre le lazy load des résultat de l'UI
   - [ ] Ou pagination
   - [ ] Ou plutot: ion-infinite-scroll
@@ -64,7 +65,9 @@ TODO:
   - [x] Month
   - [ ] Today
 - [ ] Supprimmer la section "all day"
-- [ ] Faire le onClick pour les EDT
-- [ ] Mettre une animation "shake" quand il n'y à pas de edt après changement
+- [ ] Faire le onClick item pour les EDT
+- [ ] Mettre une animation "shake" quand il n'y à pas de EDT après changement
 - [ ] Faire marche arrière
 - [x] Fix quand il n'y à pas de groupes choisis
+- [ ] Faire le css de la vue month
+- [ ] Faire le css de la vue day

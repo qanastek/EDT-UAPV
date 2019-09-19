@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'salles', loadChildren: './salles/salles.module#SallesPageModule' },
   { path: 'ue', loadChildren: './ue/ue.module#UePageModule' },
   { path: 'groups', loadChildren: './groups/groups.module#GroupsPageModule' },
-  { path: 'edt', loadChildren: './edt/edt.module#EdtPageModule' }
+  { path: 'edt/:value', loadChildren: './edt/edt.module#EdtPageModule' }
 ];
 @NgModule({
   imports: [

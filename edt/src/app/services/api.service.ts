@@ -118,6 +118,7 @@ export class ApiService {
     
     this.http.get(URL).subscribe((response: any) => {
       this.ueoEdt = response.results;   
+      this.router.navigate(["edt", "ueo"]);
     });
   }
 
@@ -140,6 +141,7 @@ export class ApiService {
     
     this.http.get(URL).subscribe((response: any) => {
       this.ueEdt = response.results;   
+      this.router.navigate(["edt", "ue"]);
     });
   }
 
@@ -162,7 +164,7 @@ export class ApiService {
     
     this.http.get(URL).subscribe((response: any) => {
       this.profEdt = response.results;
-      console.log(URL); 
+      this.router.navigate(["edt", "profs"]);
     });
   }
 
@@ -185,6 +187,7 @@ export class ApiService {
     
     this.http.get(URL).subscribe((response: any) => {
       this.salleEdt = response.results;
+      this.router.navigate(["edt", "salles"]);
     });
   }
 
@@ -246,10 +249,10 @@ export class ApiService {
       // Requête de récupération de l'EDT 
       this.http.get(URL).subscribe((response: any) => {
         this.edtSelected = response.results;  
-      });   
 
-      // Redirection vers l'EDT
-      this.router.navigate(["edt"]);     
+        // Redirection vers l'EDT
+        this.router.navigate(["edt", "formations"]);     
+      });   
     }
     
   }

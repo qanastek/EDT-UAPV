@@ -1,17 +1,17 @@
 <ion-content>
 
-  <div *ngIf="this.API.profs && !this.API.profEdt">
+  <ion-searchbar
+    debounce="500"
+    placeholder="Entrée le nom de l'enseignant"
+    autocomplete="on"
+    clearIcon="close"
+    color="search"
+    inputmode="text"
+    searchIcon="ios-funnel"
+    [(ngModel)]="this.searchCurrent" 
+  ></ion-searchbar>
 
-    <ion-searchbar
-      debounce="500"
-      placeholder="Entrée le nom de l'enseignant"
-      autocomplete="on"
-      clearIcon="close"
-      color="search"
-      inputmode="text"
-      searchIcon="ios-funnel"
-      [(ngModel)]="this.searchCurrent" 
-    ></ion-searchbar>
+  <div *ngIf="this.API.profs && !this.API.profEdt">
 
     <div *ngIf="this.searchCurrent">
       <ion-list>
@@ -56,30 +56,12 @@
     </div>
 
   </div>
-    
-  <div *ngIf="this.API.profEdt" style="height: 100vh !important;">
 
-    <ion-button (click)="this.calendar.mode = 'day'">DAY</ion-button>
-    <ion-button (click)="this.calendar.mode = 'week'">WEEK</ion-button>
-    <ion-button (click)="this.calendar.mode = 'month'">MONTH</ion-button>
-
-    <calendar
-      [eventSource]="this.API.loadCalendar(this.API.profEdt)"
-      [calendarMode]="this.calendar.mode"
-      [currentDate]="this.calendar.currentDate"
-      [step]="30"
-      [startHour]="8"
-      [endHour]="21"
-      [startingDayWeek]="1"
-      [locale]="'en-GB'"
-      (onEventSelected)="this.clickClass($event)"
-    ></calendar>
-
-  </div>
-
-  <div *ngIf="!this.API.profs || !this.searchCurrent">
+  <div *ngIf="!this.API.profs || !this.searchCurrent" style="text-align: center;">
     <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
-    <p style="color: rgba(229, 229, 234); font-size: 2em;">Remplir le champs</p>
+    <p style="color: rgba(229, 229, 234); font-size: 2em;">
+      Entrée le nom de l'enseignant
+    </p>
   </div>
 
 </ion-content>

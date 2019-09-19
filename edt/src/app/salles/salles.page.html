@@ -1,82 +1,46 @@
 <ion-content class="align-items-center" fullscreen>
 
-  <div *ngIf="!this.API.salles">
+  <ion-searchbar
+    debounce="500"
+    placeholder="Entrée la salle"
+    autocomplete="on"
+    clearIcon="close"
+    color="search"
+    inputmode="text"
+    searchIcon="ios-funnel"
+    [(ngModel)]="this.searchCurrent" 
+  ></ion-searchbar>
+
+  <div *ngIf="!this.API.salles" style="text-align: center;">
     <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
-    <p style="color: rgba(229, 229, 234); font-size: 2em;">Fill up the field</p>
+    <p style="color: rgba(229, 229, 234); font-size: 2em;">Chargement...</p>
   </div>
 
-  <div *ngIf="this.API.salles && !this.API.salleEdt">
-
-    <ion-searchbar
-      debounce="500"
-      placeholder="Entrée la salle"
-      autocomplete="on"
-      clearIcon="close"
-      color="search"
-      inputmode="text"
-      searchIcon="ios-funnel"
-      [(ngModel)]="this.searchCurrent" 
-    ></ion-searchbar>
+  <div *ngIf="this.API.salles">
     
     <ion-list>
 
       <div *ngFor="let section of this.API.salles">
-        <div *ngFor="let salle of section.names">
-    
-            <div *ngIf="this.searchCurrent.length <= 0">
-              <ion-item (click)="this.API.getEdtSalle(salle.code)">
-                <ion-label>
-      
-                  <p>
-                    {{salle.name}}
-                  </p>
-      
-                </ion-label>
-              </ion-item>
-            </div>
-      
-            <div *ngIf="this.searchCurrent.length > 0">
+        <div *ngFor="let salle of section.names">      
 
-              <!-- Si le nom de la salle contient l'input -->
-              <ion-item
-                *ngIf="salle.name.toLowerCase().includes(this.searchCurrent.toLowerCase())"
-                (click)="this.API.getEdtSalle(salle.code)"
-              >
-                <ion-label>
-      
-                  <p>
-                    {{salle.name}}
-                  </p>
-      
-                </ion-label>
-              </ion-item>
+          <!-- Si le nom de la salle contient l'input -->
+          <ion-item
+            *ngIf="salle.name.toLowerCase().includes(this.searchCurrent.toLowerCase()) || this.searchCurrent.length <= 0"
+            (click)="this.API.getEdtSalle(salle.code)"
+          >
+            <ion-label>
+  
+              <p>
+                {{salle.name}}
+              </p>
+  
+            </ion-label>
+          </ion-item>     
 
-            </div>
-            
         </div>
       </div>
 
     </ion-list>
-  </div>
-  
-  <div *ngIf="this.API.salleEdt" style="height: 100vh !important;">
-
-    <ion-button (click)="this.calendar.mode = 'day'">DAY</ion-button>
-    <ion-button (click)="this.calendar.mode = 'week'">WEEK</ion-button>
-    <ion-button (click)="this.calendar.mode = 'month'">MONTH</ion-button>
-
-    <calendar
-      [eventSource]="this.API.loadCalendar(this.API.salleEdt)"
-      [calendarMode]="this.calendar.mode"
-      [currentDate]="this.calendar.currentDate"
-      [step]="30"
-      [startHour]="8"
-      [endHour]="21"
-      [startingDayWeek]="1"
-      [locale]="'en-GB'"
-      (onEventSelected)="this.clickClass($event)"
-    ></calendar>
-
   </div>
 
 </ion-content>

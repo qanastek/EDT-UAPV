@@ -1,23 +1,25 @@
 <ion-content class="align-items-center" fullscreen>
+      
+    <ion-searchbar
+    debounce="500"
+    placeholder="Entrée votre diplôme / filière"
+    autocomplete="on"
+    clearIcon="close"
+    color="search"
+    inputmode="text"
+    searchIcon="ios-funnel"
+    [(ngModel)]="this.searchCurrent" 
+    ></ion-searchbar>
 
-    <div *ngIf="!this.API.promos">
+    <div *ngIf="!this.API.promos" style="text-align: center;">
       <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
-      <p style="color: rgba(229, 229, 234); font-size: 2em;">Fill up the field</p>
+      <p style="color: rgba(229, 229, 234); font-size: 2em;">
+        Chargement...
+      </p>
     </div>
   
     <!-- La partie des promotions -->
     <div *ngIf="this.API.promos">
-      
-      <ion-searchbar
-      debounce="500"
-      placeholder="Entrée votre diplôme / filière"
-      autocomplete="on"
-      clearIcon="close"
-      color="search"
-      inputmode="text"
-      searchIcon="ios-funnel"
-      [(ngModel)]="this.searchCurrent" 
-      ></ion-searchbar>
 
       <ion-list>
   
