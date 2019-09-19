@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Choix des groupes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="this.API.groupes">
+
+    <ion-list>
+      <ion-item *ngFor="let groupe of this.API.groupes">
+        
+        <ion-label>{{groupe.display}}</ion-label>
+
+        <ion-checkbox 
+          slot="end"
+          checked="false"
+          (click)="this.API.insertGroup(groupe.code)"
+        ></ion-checkbox>
+
+      </ion-item>
+    </ion-list>
+
+    <p *ngIf="this.API.groupsSelected.length <= 0 && this.statutEmpty" style="color: red;">
+      Veuillez remplir au moins un champ
+    </p>
+
+    <ion-button (click)="this.goToEdt()">
+      Filtrer
+    </ion-button>
+
+  </div>
+
+</ion-content>

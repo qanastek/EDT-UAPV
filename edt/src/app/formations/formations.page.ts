@@ -1,6 +1,7 @@
 import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formations',
@@ -14,32 +15,21 @@ export class FormationsPage implements OnInit {
   // eventSource = this.API.loadCalendar(this.API.edtSelected);
   eventSource = [];
 
-  calendar = {
-    currentDate: new Date(),
-    mode: 'week'
-  };
-
   constructor(
     public API: ApiService,
-    public popoverController: PopoverController
+    public popoverController: PopoverController,
+    public router: Router
   ) { }
 
   ngOnInit() {
     this.API.getAllPromos();
   }
 
-  // async presentPopover(ev: any) {
-  //   const popover = await this.popoverController.create({
-  //     component: CourseComponent,
-  //     event: ev,
-  //     translucent: true
-  //   });
-  //   return await popover.present();
-  // }
-
-  clickClass(event) {
-    console.log(event.title);   
-    // this.presentPopover(event);     
+  goToGroups(code: any) {
+    this.searchCurrent = '';
+    this.API.getGroupsAndEdt(code);
+        
+    this.router.navigate(["groups"]);
   }
 
 }

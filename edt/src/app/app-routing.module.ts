@@ -10,7 +10,9 @@ const routes: Routes = [
   { path: 'enseignants', loadChildren: './enseignants/enseignants.module#EnseignantsPageModule' },
   { path: 'ueo', loadChildren: './ueo/ueo.module#UeoPageModule' },
   { path: 'salles', loadChildren: './salles/salles.module#SallesPageModule' },
-  { path: 'ue', loadChildren: './ue/ue.module#UePageModule' }
+  { path: 'ue', loadChildren: './ue/ue.module#UePageModule' },
+  { path: 'groups', loadChildren: './groups/groups.module#GroupsPageModule' },
+  { path: 'edt', loadChildren: './edt/edt.module#EdtPageModule' }
 ];
 @NgModule({
   imports: [

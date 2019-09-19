@@ -1,6 +1,7 @@
 import { diplomes } from './../interfaces/diplomes';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -49,7 +50,8 @@ export class ApiService {
   public salleEdt: any;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    public router: Router
   ) { }
 
   /**
@@ -94,7 +96,7 @@ export class ApiService {
    */
   public getGroupsAndEdt(promo: string) {
     this.getGroupePromo(promo);
-    this.getPromoEdt(promo);
+    this.getPromoEdt(promo); 
   }
 
   /**
@@ -206,31 +208,48 @@ export class ApiService {
     }
 
   }
-  
-  public getGroupsEdt() {
+
+  private getGroupUrl() {
+
+    // URL sans groupes
     let URL = "https://edt-api.univ-avignon.fr/app.php/api/events_tdoption/";
     
     var groups = "";
 
+    // Add each groups to to string
     for (let i = 0; i < this.groupsSelected.length; i++) {
 
       groups += this.groupsSelected[i];
 
+      // If isnt the last group
       if (i !== this.groupsSelected.length - 1) {
         groups += "-";
       }
 
     }
     
+    // Complété l'URL
     URL += groups;
+    return URL;
+  }
 
-    console.log(URL); 
-    this.urlSelected = URL; 
+  public getGroupsEdt() {
+    // Récupère l'URL qui nous permettras de faire la requête de récupération de l'EDT
+    let URL = this.getGroupUrl();
     
-    if (this.urlSelected) {
+    if (URL && this.groupsSelected.length > 0) {
+
+      // TODO: Enlevé peut etre
+      this.urlSelected = URL; 
+      console.log(this.urlSelected); 
+
+      // Requête de récupération de l'EDT 
       this.http.get(URL).subscribe((response: any) => {
-        this.edtSelected =  response.results;
-      });
+        this.edtSelected = response.results;  
+      });   
+
+      // Redirection vers l'EDT
+      this.router.navigate(["edt"]);     
     }
     
   }

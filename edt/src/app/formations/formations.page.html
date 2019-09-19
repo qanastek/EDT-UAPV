@@ -6,7 +6,7 @@
     </div>
   
     <!-- La partie des promotions -->
-    <div *ngIf="this.API.promos && !this.API.groupes">
+    <div *ngIf="this.API.promos">
       
       <ion-searchbar
       debounce="500"
@@ -41,7 +41,7 @@
                 <!-- Si le nom de l'UE contient l'input -->
                 <ion-item
                   *ngIf="diplome.name.toLowerCase().includes(this.searchCurrent.toLowerCase())"
-                  (click)="this.API.getGroupsAndEdt(diplome.code); this.searchCurrent = '';"
+                  (click)="this.goToGroups(diplome.code)"
                 >
                   <ion-label>
         
@@ -58,48 +58,6 @@
         </div>
   
       </ion-list>
-    </div>
-
-    <!-- La partie des groupes-->
-    <div *ngIf="this.API.promos && this.API.groupes && !this.API.edtSelected">
-
-      <ion-list>
-        <ion-item *ngFor="let groupe of this.API.groupes">
-          <ion-label>{{groupe.display}}</ion-label>
-          <!-- [(ngModel)]="" -->
-          <ion-checkbox 
-            slot="end"
-            checked="false"
-            (click)="this.API.insertGroup(groupe.code)"
-          ></ion-checkbox>
-        </ion-item>
-      </ion-list>
-
-      <ion-button (click)="this.API.getGroupsEdt()">
-        Filtrer
-      </ion-button>
-
-    </div>
-
-    <div *ngIf="this.API.edtSelected" style="height: 100vh !important;">
-
-      <ion-button (click)="this.calendar.mode = 'day'">DAY</ion-button>
-      <ion-button (click)="this.calendar.mode = 'week'">WEEK</ion-button>
-      <ion-button (click)="this.calendar.mode = 'month'">MONTH</ion-button>
-
-      <!--  [markDisabled]="disableWeekEnd" -->
-      <calendar
-        [eventSource]="this.API.loadCalendar(this.API.edtSelected)"
-        [calendarMode]="this.calendar.mode"
-        [currentDate]="this.calendar.currentDate"
-        [step]="30"
-        [startHour]="8"
-        [endHour]="21"
-        [startingDayWeek]="1"
-        [locale]="'en-GB'"
-        (onEventSelected)="this.clickClass($event)"
-      ></calendar>
-
     </div>
   
   </ion-content>
