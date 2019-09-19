@@ -61,10 +61,13 @@
   
   <div *ngIf="this.API.salleEdt" style="height: 100vh !important;">
 
-    <!--  [markDisabled]="disableWeekEnd" -->
+    <ion-button (click)="this.calendar.mode = 'day'">DAY</ion-button>
+    <ion-button (click)="this.calendar.mode = 'week'">WEEK</ion-button>
+    <ion-button (click)="this.calendar.mode = 'month'">MONTH</ion-button>
+
     <calendar
       [eventSource]="this.API.loadCalendar(this.API.salleEdt)"
-      [calendarMode]="'week'"
+      [calendarMode]="this.calendar.mode"
       [currentDate]="this.calendar.currentDate"
       [step]="30"
       [startHour]="8"

@@ -11,7 +11,8 @@ export class EnseignantsPage implements OnInit {
   public searchCurrent: string = "";
 
   calendar = {
-    currentDate: new Date()
+    currentDate: new Date(),
+    mode: 'week'
   };
 
   constructor(

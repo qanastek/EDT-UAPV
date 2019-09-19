@@ -15,7 +15,8 @@ export class FormationsPage implements OnInit {
   eventSource = [];
 
   calendar = {
-    currentDate: new Date()
+    currentDate: new Date(),
+    mode: 'week'
   };
 
   constructor(

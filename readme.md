@@ -58,3 +58,11 @@ TODO:
 - [x] Faire un fichier par interface
 - [x] Fix calendar height
 - [x] Faire le remove()
+- [ ] Ajouter les buttons:
+  - [x] Day
+  - [x] Week
+  - [x] Month
+  - [ ] Today
+- [ ] Supprimmer la section "all day"
+- [ ] Faire le onClick pour les EDT
+- [ ] Mettre une animation "shake" quand il n'y à pas de edt après changement

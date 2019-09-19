@@ -83,10 +83,14 @@
 
     <div *ngIf="this.API.edtSelected" style="height: 100vh !important;">
 
+      <ion-button (click)="this.calendar.mode = 'day'">DAY</ion-button>
+      <ion-button (click)="this.calendar.mode = 'week'">WEEK</ion-button>
+      <ion-button (click)="this.calendar.mode = 'month'">MONTH</ion-button>
+
       <!--  [markDisabled]="disableWeekEnd" -->
       <calendar
         [eventSource]="this.API.loadCalendar(this.API.edtSelected)"
-        [calendarMode]="'week'"
+        [calendarMode]="this.calendar.mode"
         [currentDate]="this.calendar.currentDate"
         [step]="30"
         [startHour]="8"
