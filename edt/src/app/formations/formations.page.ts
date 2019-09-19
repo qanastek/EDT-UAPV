@@ -1,3 +1,4 @@
+import { DatabaseService } from './../services/database.service';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
@@ -33,11 +34,15 @@ export class FormationsPage implements OnInit {
     public API: ApiService,
     public popoverController: PopoverController,
     public router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    public DB: DatabaseService
   ) { }
 
   ngOnInit() {
     this.API.getAllPromos();
+  }
+
+  ngOnDestroy(): void {
   }
 
   goToGroups(code: any) {

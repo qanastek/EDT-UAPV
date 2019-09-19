@@ -1,3 +1,5 @@
+import { Favorite } from './../interfaces/favorite';
+import { DatabaseService } from './../services/database.service';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
@@ -24,7 +26,8 @@ export class AddFavPage implements OnInit {
   constructor(
     public API: ApiService,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    public DB: DatabaseService
   ) { }
 
   ngOnInit() {
@@ -80,14 +83,13 @@ export class AddFavPage implements OnInit {
   insertFav() {
     this.statutEmpty = true;
 
-    var result = {
+    var result: Favorite = {
       diplome: this.namePromo,
       chips: this.groupsSelectedName,
       url: this.getGroupUrl()
     };
-
-    console.log("New fav:");
-    console.log(result);        
+    
+    this.DB.addFav(result);
 
     this.router.navigate(["formations"]);
   }
