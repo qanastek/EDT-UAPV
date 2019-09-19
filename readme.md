@@ -71,3 +71,5 @@ TODO:
 - [x] Fix quand il n'y à pas de groupes choisis
 - [ ] Faire le css de la vue month
 - [ ] Faire le css de la vue day
+- [ ] Créer un système de favoris
+- [ ] Mettre un ion-refresher pour l'EDT du favoris
