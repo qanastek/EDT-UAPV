@@ -31,7 +31,7 @@
 - [ ] Faire le system de caching avec la vérification de date
 - [ ] A chaque recherche enregistrer celle-ci dans une table de sorte à pouvoir savoir quelle est la recherche la plus chercher et la mêttre en tête de resultat
 
-- [ ] Factorisé le code de sorte à utilisé un component avec un input de type function
+- [x] Factorisé le code de sorte à utilisé un component avec un input de type function
   - [x] Faire facto de EDT
 - [ ] Mettre le lazy load des résultat de l'UI
   - [ ] Ou pagination
@@ -73,7 +73,7 @@ TODO:
 - [ ] Faire le css de la vue day
 - [x] Créer un système de favoris
 - [x] Pouvoir ajouter un favoris
-- [ ] Mettre un ion-refresher pour l'EDT du favoris
+- [x] Mettre un ion-refresher pour l'EDT du favoris
 - [ ] Work on page loading
 - [ ] Mettre un wait until at least 3/4 letter to searching (talking about searchbar)
 - [ ] Fix la suppression du favoris

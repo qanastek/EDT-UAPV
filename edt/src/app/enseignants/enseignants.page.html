@@ -1,7 +1,7 @@
 <ion-content>
 
   <ion-searchbar
-    debounce="500"
+    debounce="300"
     placeholder="Entrée le nom de l'enseignant"
     autocomplete="on"
     clearIcon="close"
@@ -13,7 +13,7 @@
 
   <div *ngIf="this.API.profs && !this.API.profEdt">
 
-    <div *ngIf="this.searchCurrent">
+    <div *ngIf="this.searchCurrent && this.searchCurrent.length >= 3">
       <ion-list>
     
         <div *ngFor="let section of this.API.profs">
@@ -57,7 +57,7 @@
 
   </div>
 
-  <div *ngIf="!this.API.profs || !this.searchCurrent" style="text-align: center;">
+  <div *ngIf="!this.API.profs || !this.searchCurrent || this.searchCurrent.length < 3" style="text-align: center;">
     <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
     <p style="color: rgba(229, 229, 234); font-size: 2em;">
       Entrée le nom de l'enseignant

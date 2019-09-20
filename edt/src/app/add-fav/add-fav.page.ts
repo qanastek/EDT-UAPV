@@ -55,6 +55,7 @@ export class AddFavPage implements OnInit {
     this.getGroupePromo(code);
   }
 
+  // Ajoute le groupe à l'array des groupes
   insertGroup(code: any, name: string) {
 
     let insideArray = this.groupsSelected.indexOf(code) == -1;
@@ -80,17 +81,22 @@ export class AddFavPage implements OnInit {
     
   }
 
+  // Push le favori dans la DB
   insertFav() {
     this.statutEmpty = true;
 
+    // Créer l'objet correspondant à ce favori
     var result: Favorite = {
       diplome: this.namePromo,
       chips: this.groupsSelectedName,
       url: this.getGroupUrl()
     };
     
+    // Le push dans la DB
     this.DB.addFav(result);
 
+    // Redirige vers formations
+    // TODO
     this.router.navigate(["formations"]);
   }
 

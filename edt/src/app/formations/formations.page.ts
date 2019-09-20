@@ -72,8 +72,11 @@ export class FormationsPage implements OnInit {
     this.router.navigate(["add-fav"]);
   }
 
-  showFav() {
-
+  doRefresh(event) {
+    setTimeout(() => {
+      this.DB.getFavorites();
+      event.target.complete();
+    }, 2000);
   }
 
 }

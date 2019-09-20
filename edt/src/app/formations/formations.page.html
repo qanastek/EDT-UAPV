@@ -71,6 +71,22 @@
     <!-- Favoris -->
     <div [hidden]="this.tab !== 1">
 
+      <!-- Composant de d'actualisation en tirant -->
+      <ion-refresher 
+        slot="fixed" 
+        (ionRefresh)="doRefresh($event)"
+        pullFactor="1"
+        pullMin="100"
+        pullMax="200"
+      >
+        <ion-refresher-content
+          pullingIcon="ios-arrow-down"
+          pullingText="Tirer pour actualiser"
+          refreshingSpinner="circles"
+          refreshingText="Actualisation...">
+        </ion-refresher-content>
+      </ion-refresher>
+
       <ion-list>   
         <!-- Multi-line sliding item with icon options on both sides -->
         <ion-item-sliding>

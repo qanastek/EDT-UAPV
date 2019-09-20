@@ -27,16 +27,21 @@ export class DatabaseService {
     this.makeAndLoadDb();
   }
 
+  // Créer le fichier DB de SQLite et load tout
   makeAndLoadDb() {
 
+    // Quand la plateforme (smartphone) est capable d'exécuté du code
     this.plt.ready().then(() => {
 
+      // Créer la DB SQLite
       this.sqlite.create({
         name: 'edt-au.db',
         location: 'default'
       })
       .then((db: SQLiteObject) => {
           this.database = db;
+
+          // Créer les tables qui compose la DB
           this.seedDatabase();
       });
 
@@ -44,16 +49,18 @@ export class DatabaseService {
 
   }
 
+  // Créer les tables qui compose la DB
   seedDatabase() {
 
-    // Recherche du fichier
+    // Lecture du fichier
     this.http.get('assets/sql/seed.sql', { responseType: 'text'})
     .subscribe(sql => {
 
-      // Lecture du fichier
+      // Exécution de la requête
       this.sqlitePorter.importSqlToDb(this.database, sql)
       .then(_ => {
 
+        // Ensuite, insert le contenu dev dans la DB 
         this.fillInformations();
 
       })
@@ -63,6 +70,7 @@ export class DatabaseService {
 
   }
 
+  // Insert le contenu souhaité par les developpeurs
   fillInformations() {
 
     this.http.get('assets/sql/content.sql', { responseType: 'text' })
@@ -71,7 +79,7 @@ export class DatabaseService {
       this.sqlitePorter.importSqlToDb(this.database, sqlFile)
       .then(_ => {
 
-        // Récupére l'ensemble des quêtes
+        // Récupére l'ensemble des favoris
         this.getFavorites();
 
         this.dbReady.next(true);
@@ -85,8 +93,10 @@ export class DatabaseService {
 
   }
 
+  // Refresh la liste des favori avec le résultat de la DB
   public getFavorites(): any {
 
+    // La query SQL
     var sqlQuery = `      
       SELECT
         *
@@ -95,10 +105,14 @@ export class DatabaseService {
       ;
     `;
 
+    // Lance la requête sur la DB
     return this.database.executeSql(sqlQuery, [])
     .then(data => {
+
+      // Créer une array temporaire qui stockera tout les favoris dans la DB
       var arrayTemp: Array<FavoriteRead> = [];
 
+      // Pour chaque favori de la DB
       for (let i = 0; i < data.rows.length; i++) {
         arrayTemp.push({
           id: data.rows.item(i).id,
@@ -115,10 +129,12 @@ export class DatabaseService {
 
   }
 
+  // Insert le favori saisie par le client dans la DB
   public addFav(
     fav: Favorite
   ): any {
 
+    // La query de insert
     let SqlQuery = `
       INSERT or IGNORE INTO
         favorites
@@ -135,25 +151,32 @@ export class DatabaseService {
       ;
     `;
 
-    console.log(SqlQuery);
-
+    // Lance cette requête sur la DB
     this.database.executeSql(SqlQuery, [])
     .then(() => {
-      // Refresh la DB
+
+      // Refresh la liste des favori avec le résultat de la DB
       this.getFavorites();
+
+      // Redirige
       this.router.navigate(['formations']);
+
     })
     .catch(e => console.error(e));
 
   }
 
+  // Groupes (chips) to String
   collaspechips(chips: Array<string>) {
     let output = "";
 
+    // Pour chaque groupe
     for (let i = 0; i < chips.length; i++) {
 
+      // Le coller à la string
       output += chips[i];
 
+      // Et si il n'est pas à la fin alors mettre une tilde pour permettre par la suite le splite
       if (i < chips.length - 1) {
         output += "~";       
       }   
@@ -161,8 +184,6 @@ export class DatabaseService {
     }
     
     return output;
-
   }
-
 
 }
