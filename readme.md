@@ -76,5 +76,5 @@ TODO:
 - [x] Mettre un ion-refresher pour l'EDT du favoris
 - [ ] Work on page loading
 - [ ] Mettre un wait until at least 3/4 letter to searching (talking about searchbar)
-- [ ] Fix la suppression du favoris
+- [x] Fix la suppression du favoris
 - [ ] Fix le retour lors de la création du favori

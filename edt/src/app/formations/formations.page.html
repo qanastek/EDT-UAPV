@@ -89,8 +89,8 @@
 
       <ion-list>   
         <!-- Multi-line sliding item with icon options on both sides -->
-        <ion-item-sliding>
-          <ion-item *ngFor="let favoris of this.DB.favorites" ion-activatable>
+        <ion-item-sliding *ngFor="let favoris of this.DB.favorites" ion-activatable>
+          <ion-item>
 
             <!-- Effet comme un boutton -->
             <ion-ripple-effect></ion-ripple-effect>
