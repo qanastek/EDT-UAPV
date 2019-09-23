@@ -74,7 +74,10 @@ TODO:
 - [x] Créer un système de favoris
 - [x] Pouvoir ajouter un favoris
 - [x] Mettre un ion-refresher pour l'EDT du favoris
-- [ ] Work on page loading
-- [ ] Mettre un wait until at least 3/4 letter to searching (talking about searchbar)
+- [x] Work on page loading
+- [x] Mettre un wait until at least 3/4 letter to searching (talking about searchbar)
 - [x] Fix la suppression du favoris
 - [ ] Fix le retour lors de la création du favori
+- [ ] Fix nom prénom désordre
+  - [ ] Driss Matrouf
+  - [ ] Matrouf Driss

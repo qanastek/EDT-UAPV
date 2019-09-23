@@ -93,11 +93,8 @@ export class AddFavPage implements OnInit {
     };
     
     // Le push dans la DB
+    // Et redirige
     this.DB.addFav(result);
-
-    // Redirige vers formations
-    // TODO
-    this.router.navigate(["formations"]);
   }
 
   getGroupUrl() {

@@ -1,7 +1,7 @@
 import { FavoriteRead } from './../interfaces/favorite-read';
 import { Favorite } from './../interfaces/favorite';
 import { Injectable } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { Platform, NavController } from '@ionic/angular';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { HttpClient } from '@angular/common/http';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
@@ -22,7 +22,8 @@ export class DatabaseService {
     private sqlitePorter: SQLitePorter,
     private sqlite: SQLite,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    public navCtrl: NavController
   ) {
     this.makeAndLoadDb();
   }
@@ -158,8 +159,8 @@ export class DatabaseService {
       // Refresh la liste des favori avec le résultat de la DB
       this.getFavorites();
 
-      // Redirige
-      this.router.navigate(['formations']);
+      // Redirige vers formations
+      this.navCtrl.pop();
 
     })
     .catch(e => console.error(e));

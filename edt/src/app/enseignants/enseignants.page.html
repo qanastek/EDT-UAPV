@@ -16,7 +16,7 @@
     <div *ngIf="this.searchCurrent && this.searchCurrent.length >= 3">
       <ion-list>
     
-        <div *ngFor="let section of this.API.profs">
+        <div *ngFor="let section of this.API.profs" class="prof">
           <div *ngFor="let prof of section.names">
       
               <div *ngIf="this.searchCurrent.length <= 0">

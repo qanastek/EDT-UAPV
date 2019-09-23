@@ -69,7 +69,8 @@ export class FormationsPage implements OnInit {
   }
 
   addFav() {
-    this.router.navigate(["add-fav"]);
+    // Avance sans injecter dans le stack du router
+    this.router.navigate(["add-fav"], { skipLocationChange: true });
   }
 
   doRefresh(event) {

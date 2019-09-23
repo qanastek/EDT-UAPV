@@ -1,5 +1,5 @@
 import { ApiService } from './../services/api.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-enseignants',
@@ -16,7 +16,8 @@ export class EnseignantsPage implements OnInit {
   };
 
   constructor(
-    public API: ApiService
+    public API: ApiService,
+    private elRef: ElementRef
   ) { }
 
   ngOnInit() {
@@ -29,5 +30,9 @@ export class EnseignantsPage implements OnInit {
     console.log(event.title);   
     // this.presentPopover(event);     
   }
+
+  // getCountProfs() {
+  //   this.profsCounter = this.elRef.nativeElement.querySelectorAll('.prof').length;
+  // }
 
 }
