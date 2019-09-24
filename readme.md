@@ -67,7 +67,7 @@ TODO:
 - [ ] Supprimmer la section "all day"
 - [ ] Faire le onClick item pour les EDT
 - [ ] Mettre une animation "shake" quand il n'y à pas de EDT après changement
-- [ ] Faire marche arrière
+- [x] Faire marche arrière
 - [x] Fix quand il n'y à pas de groupes choisis
 - [ ] Faire le css de la vue month
 - [ ] Faire le css de la vue day
