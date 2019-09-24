@@ -19,114 +19,115 @@
 </ion-header>
 
 <ion-content class="align-items-center" fullscreen>
-      
-    <div [hidden]="this.tab !== 0">
-      <ion-searchbar
-      debounce="500"
-      placeholder="Entrée votre diplôme / filière"
-      autocomplete="on"
-      clearIcon="close"
-      color="search"
-      inputmode="text"
-      searchIcon="ios-funnel"
-      [(ngModel)]="this.searchCurrent" 
-      ></ion-searchbar>
-  
-      <div *ngIf="!this.API.promos" style="text-align: center;">
-        <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
-        <p style="color: rgba(229, 229, 234); font-size: 2em;">
-          Chargement...
-        </p>
-      </div>
     
-      <!-- La partie des promotions -->
-      <div *ngIf="this.API.promos">
-  
-        <ion-list>
-    
-          <div *ngFor="let section of this.API.promos">
-            <div *ngFor="let diplome of section.names">
-    
-              <!-- Si le nom de l'UE contient l'input -->
-              <ion-item
-                *ngIf="diplome.name.toLowerCase().includes(this.searchCurrent.toLowerCase()) || this.searchCurrent.length <= 0"
-                (click)="this.goToGroups(diplome.code)"
-              >
-                <ion-label>
-      
-                  <p>
-                    {{diplome.name}}
-                  </p>
-      
-                </ion-label>
-              </ion-item>
-                
-            </div>
-          </div>
-    
-        </ion-list>
-      </div>
+  <div [hidden]="this.tab !== 0">
+    <ion-searchbar
+    debounce="500"
+    placeholder="Entrée votre diplôme / filière"
+    autocomplete="on"
+    clearIcon="close"
+    color="search"
+    inputmode="text"
+    searchIcon="ios-funnel"
+    [(ngModel)]="this.searchCurrent" 
+    ></ion-searchbar>
+
+    <div *ngIf="!this.API.promos" style="text-align: center;">
+      <ion-icon name="ios-information-circle-outline" class="information"></ion-icon>
+      <p style="color: rgba(229, 229, 234); font-size: 2em;">
+        Chargement...
+      </p>
     </div>
+  
+    <!-- La partie des promotions -->
+    <div *ngIf="this.API.promos">
 
-    <!-- Favoris -->
-    <div [hidden]="this.tab !== 1">
-
-      <!-- Composant de d'actualisation en tirant -->
-      <ion-refresher 
-        slot="fixed" 
-        (ionRefresh)="doRefresh($event)"
-        pullFactor="1"
-        pullMin="100"
-        pullMax="200"
-      >
-        <ion-refresher-content
-          pullingIcon="ios-arrow-down"
-          pullingText="Tirer pour actualiser"
-          refreshingSpinner="circles"
-          refreshingText="Actualisation...">
-        </ion-refresher-content>
-      </ion-refresher>
-
-      <ion-list>   
-        <!-- Multi-line sliding item with icon options on both sides -->
-        <ion-item-sliding *ngFor="let favoris of this.DB.favorites" ion-activatable>
-          <ion-item>
-
-            <!-- Effet comme un boutton -->
-            <ion-ripple-effect></ion-ripple-effect>
-
-            <ion-label (click)="loadEdt(favoris.url)" class="ion-text-wrap">
+      <ion-list>
+  
+        <div *ngFor="let section of this.API.promos">
+          <div *ngFor="let diplome of section.names">
+  
+            <!-- Si le nom de l'UE contient l'input -->
+            <ion-item
+              *ngIf="diplome.name.toLowerCase().includes(this.searchCurrent.toLowerCase()) || this.searchCurrent.length <= 0"
+              (click)="this.goToGroups(diplome.code)"
+            >
+              <ion-label>
+    
+                <p>
+                  {{diplome.name}}
+                </p>
+    
+              </ion-label>
+            </ion-item>
               
-              <h2>
-                Diplôme:
-                <span style="text-transform: uppercase; font-style: italic;">
-                  {{favoris.diplome}}
-                </span>
-              </h2>
-
-              <ion-chip *ngFor="let chip of favoris.chips" color="primary">
-                <ion-label style="text-transform: uppercase; font-size: 0.8em;">
-                  {{chip}}
-                </ion-label>
-              </ion-chip>
-
-            </ion-label>
-
-          </ion-item>
-      
-          <ion-item-options side="start">
-            <ion-item-option color="danger">
-              <ion-icon slot="icon-only" name="trash"></ion-icon>
-            </ion-item-option>
-          </ion-item-options>
-
-        </ion-item-sliding>
-      </ion-list>
-
-      <ion-button expand="block" color="primary" size="large" (click)="this.addFav()">
-        Ajouter un favori
-      </ion-button>
-
-    </div>
+          </div>
+        </div>
   
-  </ion-content>
+      </ion-list>
+    </div>
+  </div>
+
+  <!-- Favoris -->
+  <div [hidden]="this.tab !== 1">
+
+    <!-- Composant de d'actualisation en tirant -->
+    <ion-refresher 
+      slot="fixed" 
+      (ionRefresh)="doRefresh($event)"
+      pullFactor="1"
+      pullMin="100"
+      pullMax="200"
+    >
+      <ion-refresher-content
+        pullingIcon="ios-arrow-down"
+        pullingText="Tirer pour actualiser"
+        refreshingSpinner="circles"
+        refreshingText="Actualisation...">
+      </ion-refresher-content>
+    </ion-refresher>
+
+    <ion-list>   
+      <!-- Multi-line sliding item with icon options on both sides -->
+      <ion-item-sliding *ngFor="let favoris of this.DB.favorites" ion-activatable>
+        <ion-item>
+
+          <!-- Effet comme un boutton -->
+          <ion-ripple-effect></ion-ripple-effect>
+
+          <ion-label (click)="loadEdt(favoris.url)" class="ion-text-wrap">
+            
+            <h2>
+              Diplôme:
+              <span style="text-transform: uppercase; font-style: italic;">
+                {{favoris.diplome}}
+              </span>
+            </h2>
+
+            <ion-chip *ngFor="let chip of favoris.chips" color="primary">
+              <ion-label style="text-transform: uppercase; font-size: 0.8em;">
+                {{chip}}
+              </ion-label>
+            </ion-chip>
+
+          </ion-label>
+
+        </ion-item>
+    
+        <!-- Slider de supréssion du favori -->
+        <ion-item-options side="start" (click)="this.DB.deleteFav(favoris.id)">
+          <ion-item-option color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+
+      </ion-item-sliding>
+    </ion-list>
+
+    <ion-button expand="block" color="primary" size="large" (click)="this.addFav()">
+      Ajouter un favori
+    </ion-button>
+
+  </div>
+
+</ion-content>

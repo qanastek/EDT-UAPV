@@ -77,7 +77,10 @@ TODO:
 - [x] Work on page loading
 - [x] Mettre un wait until at least 3/4 letter to searching (talking about searchbar)
 - [x] Fix la suppression du favoris
-- [ ] Fix le retour lors de la création du favori
+  - [x] Fix le slider
+  - [x] Faire la fonction de suppression
+- [x] Fix le retour lors de la création du favori
+- [ ] Wait until a network connection is available before running the app
 - [ ] Fix nom prénom désordre
   - [ ] Driss Matrouf
   - [ ] Matrouf Driss

@@ -15,7 +15,7 @@ export class DatabaseService {
 
   private database: SQLiteObject;
   private dbReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  public favorites: Array<Favorite>; 
+  public favorites: Array<FavoriteRead>; 
 
   constructor(
     private plt: Platform,
@@ -130,9 +130,34 @@ export class DatabaseService {
 
   }
 
+  /**
+  * Fonction de supréssion d'un favori
+  * @return rien
+  * @param id Identifiant du favori à supprimé
+  */
+  deleteFav(id: number) {
+
+    // La query SQL
+    var sqlQuery = `      
+      DELETE
+      FROM
+        favorites
+      WHERE
+        id = ${id}
+      ;
+    `;
+
+    this.database.executeSql(sqlQuery, [])
+    .then(() => {
+      this.getFavorites();
+    })
+    .catch(e => console.error(e));
+
+  }
+
   // Insert le favori saisie par le client dans la DB
   public addFav(
-    fav: Favorite
+    fav: FavoriteRead
   ): any {
 
     // La query de insert
