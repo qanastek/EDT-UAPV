@@ -20,40 +20,14 @@
 - [x] Emploi du temps de cette promotion (le filtre de groupe ce fait en local): https://edt-api.univ-avignon.fr/app.php/api/events_promotion/2-L3IN
 - [x] https://edt-api.univ-avignon.fr/app.php/api/events_tdoption/9756-9757-9758-9759-9761-9753-9754-9755
 
-- [x] Remplacer la search bar de groupe pour des checkbox de sortent à pouvoir afficher plusieurs groupes à la fois
-
-- [x] Fullcalendar Angular
-  - [x] Installer fullcalendar angular
-  - [x] Faire marché en fake
-  - [x] Faire marché avec les vrais EDT
-
-- [ ] Send GET request only if internet is ON
-- [ ] Faire le system de caching avec la vérification de date
-- [ ] A chaque recherche enregistrer celle-ci dans une table de sorte à pouvoir savoir quelle est la recherche la plus chercher et la mêttre en tête de resultat
-
-- [x] Factorisé le code de sorte à utilisé un component avec un input de type function
-  - [x] Faire facto de EDT
-- [ ] Mettre le lazy load des résultat de l'UI
-  - [ ] Ou pagination
-  - [ ] Ou plutot: ion-infinite-scroll
-- [ ] Faire PWA
-- [ ] Ajouter popup
-- [ ] Ajouter cours restants avant la fin de l'année
-
 - [ ] Jeter un coup d'oeil à nebular
 
-Packages sympas:
-
-* https://www.npmjs.com/package/@fullcalendar/angular
-* https://fullcalendar.io/docs/angular
-* https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin#3-usage
-* https://www.youtube.com/watch?v=uWhfwhN5IZc
-* https://www.npmjs.com/package/angular2-fullcalendar
+## Packages sympas:
 
 * https://www.npmjs.com/package/ionic2-calendar
 * https://www.youtube.com/watch?v=uWhfwhN5IZc
 
-TODO:
+# TODO:
 
 - [x] Faire un service qui regroupe toutes les variables contenant les JSON
 - [x] Faire un fichier par interface
@@ -66,6 +40,8 @@ TODO:
   - [ ] Today
 - [ ] Supprimmer la section "all day"
 - [ ] Faire le onClick item pour les EDT
+  - [ ] Mettre memo
+  - [ ] Ajouter popup
 - [ ] Mettre une animation "shake" quand il n'y à pas de EDT après changement
 - [x] Faire marche arrière
 - [x] Fix quand il n'y à pas de groupes choisis
@@ -73,6 +49,10 @@ TODO:
 - [ ] Faire le css de la vue day
 - [x] Créer un système de favoris
 - [x] Pouvoir ajouter un favoris
+- [x] Fullcalendar Angular
+  - [x] Installer fullcalendar angular
+  - [x] Faire marché en fake
+  - [x] Faire marché avec les vrais EDT
 - [x] Mettre un ion-refresher pour l'EDT du favoris
 - [x] Work on page loading
 - [x] Mettre un wait until at least 3/4 letter to searching (talking about searchbar)
@@ -81,6 +61,14 @@ TODO:
   - [x] Faire la fonction de suppression
 - [x] Fix le retour lors de la création du favori
 - [ ] Wait until a network connection is available before running the app
+- [x] Remplacer la search bar de groupe pour des checkbox de sortent à pouvoir afficher plusieurs groupes à la fois
 - [ ] Fix nom prénom désordre
   - [ ] Driss Matrouf
   - [ ] Matrouf Driss
+- [ ] Send GET request only if internet is ON
+- [ ] Faire le system de caching avec la vérification de date
+- [ ] A chaque recherche enregistrer celle-ci dans une table de sorte à pouvoir savoir quelle est la recherche la plus chercher et la mêttre en tête de resultat
+- [x] Factorisé le code de sorte à utilisé un component avec un input de type function
+  - [x] Faire facto de EDT
+- [x] Mettre le lazy load des résultat de l'UI, ion-infinite-scroll ?
+- [ ] Ajouter cours restants avant la fin de l'année
