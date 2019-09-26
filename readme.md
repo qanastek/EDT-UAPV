@@ -60,7 +60,6 @@
   - [x] Fix le slider
   - [x] Faire la fonction de suppression
 - [x] Fix le retour lors de la création du favori
-- [ ] Wait until a network connection is available before running the app
 - [x] Remplacer la search bar de groupe pour des checkbox de sortent à pouvoir afficher plusieurs groupes à la fois
 - [ ] Fix nom prénom désordre
   - [ ] Driss Matrouf
