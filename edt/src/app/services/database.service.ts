@@ -157,7 +157,7 @@ export class DatabaseService {
 
   // Insert le favori saisie par le client dans la DB
   public addFav(
-    fav: FavoriteRead
+    fav: Favorite
   ): any {
 
     // La query de insert
