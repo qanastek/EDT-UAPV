@@ -71,5 +71,3 @@
   - [x] Faire facto de EDT
 - [x] Mettre le lazy load des résultat de l'UI, ion-infinite-scroll ?
 - [ ] Ajouter cours restants avant la fin de l'année
-
-Test 2
