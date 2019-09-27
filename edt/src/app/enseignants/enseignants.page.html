@@ -13,45 +13,27 @@
 
   <div *ngIf="this.API.profs && !this.API.profEdt">
 
-    <div *ngIf="this.searchCurrent && this.searchCurrent.length >= 3">
-      <ion-list>
-    
+    <div *ngIf="this.searchCurrent.length >= 3">
+      <ion-list>    
         <div *ngFor="let section of this.API.profs" class="prof">
           <div *ngFor="let prof of section.names">
-      
-              <div *ngIf="this.searchCurrent.length <= 0">
-                <ion-item (click)="this.API.getEdtProf(prof.uapvHarpege)">
-                  <ion-label>
-        
-                    <p>
-                      {{prof.name}}
-                    </p>
-        
-                  </ion-label>
-                </ion-item>
-              </div>
-        
-              <div *ngIf="this.searchCurrent.length > 0">
     
-                <!-- Si le nom de l'UE contient l'input -->
-                <ion-item
-                  *ngIf="prof.name.toLowerCase().includes(this.searchCurrent.toLowerCase())"
-                  (click)="this.API.getEdtProf(prof.uapvHarpege)"
-                >
-                  <ion-label>
-        
-                    <p>
-                      {{prof.name}}
-                    </p>
-        
-                  </ion-label>
-                </ion-item>
+            <!-- Si le nom de l'UE contient l'input -->
+            <ion-item
+              *ngIf="prof.name.toLowerCase().includes(this.searchCurrent.toLowerCase())"
+              (click)="this.API.getEdtProf(prof.uapvHarpege)"
+            >
+              <ion-label>
     
-              </div>
+                <p>
+                  {{prof.name}}
+                </p>
+    
+              </ion-label>
+            </ion-item>
               
           </div>
-        </div>
-    
+        </div>    
       </ion-list>
     </div>
 
