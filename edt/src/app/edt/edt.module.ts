@@ -1,3 +1,4 @@
+import { ComponentsModule } from './../components/components';
 import { NgCalendarModule } from 'ionic2-calendar';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -21,6 +22,7 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     NgCalendarModule,
+    ComponentsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [EdtPage]

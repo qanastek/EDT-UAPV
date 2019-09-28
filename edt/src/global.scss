@@ -24,3 +24,30 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-col
+{
+    padding: 0%;
+}
+
+
+.info-edt {
+    --background: rgba(0, 0, 0, 0.25); 
+    --height: 100%;
+    
+    ion-content {
+      --background: rgba(0, 0, 0, 0.25);
+    }
+}
+
+.weekview-allday-table {
+    display: none;
+}
+
+.weekview-allday-label {
+    display: none;
+}
+    
+.weekview-normal-event-container {
+    margin-top: 37px;
+}

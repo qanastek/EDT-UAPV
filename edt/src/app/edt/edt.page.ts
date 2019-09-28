@@ -1,6 +1,8 @@
+import { InfoEdtComponent } from './../components/info-edt/info-edt.component';
 import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edt',
@@ -21,7 +23,8 @@ export class EdtPage implements OnInit {
   constructor(
     public API: ApiService,
     public route: ActivatedRoute,
-    public router: Router
+    public router: Router,
+    public modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -55,9 +58,23 @@ export class EdtPage implements OnInit {
     }
   }
 
-  clickClass(event) {
-    console.log(event.title);   
-    // this.presentPopover(event);     
+  async presentModal(event) {
+    const modal = await this.modalController.create({
+      component: InfoEdtComponent,
+      componentProps: {
+        'title': event.title,
+        'startTime': event.startTime,
+        'endTime': event.endTime,
+        'allDay': event.allDay,
+        'desc': event.desc
+      },
+      cssClass: 'info-edt'
+    });
+    return await modal.present();
+  }
+
+  clickItem(event) {
+    this.presentModal(event);     
   }
 
 }
