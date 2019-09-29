@@ -62,11 +62,16 @@ export class EdtPage implements OnInit {
     const modal = await this.modalController.create({
       component: InfoEdtComponent,
       componentProps: {
-        'title': event.title,
+        'matiere': event.title.slice(0, event.title.indexOf("Enseignant")),
+        'enseignant': event.title.slice(event.title.indexOf("Enseignant"), event.title.indexOf("TD")),
+        'td': event.title.slice(event.title.indexOf("TD"), event.title.indexOf("Salle")),
+        'salle': event.title.slice(event.title.indexOf("Salle"), event.title.indexOf("Type")),
+        
         'startTime': event.startTime,
-        'endTime': event.endTime,
+        'endTime': event.endTime, 
         'allDay': event.allDay,
-        'desc': event.desc
+        'desc': event.desc,
+        'type': event.type
       },
       cssClass: 'info-edt'
     });

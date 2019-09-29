@@ -253,11 +253,12 @@ export class ApiService {
     edt.forEach(item => {
       
       send.push({
-        title: item.type + " | " + item.title,
+        title: item.title,
         startTime: new Date(item.start),
         endTime: new Date(item.end),
         allDay: false,
-        desc: item.memo
+        desc: item.memo,
+        type: item.type
       });
       
     });

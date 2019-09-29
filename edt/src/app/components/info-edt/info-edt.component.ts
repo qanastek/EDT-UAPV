@@ -9,11 +9,16 @@ import { Subscription } from 'rxjs';
 })
 export class InfoEdtComponent implements OnInit {
 
-  @Input() title: any;
+  @Input() matiere: any;
+  @Input() enseignant: any;
+  @Input() td: any;
+  @Input() salle: any;
+
   @Input() startTime: any;
   @Input() endTime: any;
   @Input() allDay: any;
   @Input() desc: any;
+  @Input() type: any;
 
   private backbuttonSubscription: Subscription;
 

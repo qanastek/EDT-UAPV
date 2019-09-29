@@ -15,18 +15,6 @@ export class FormationsPage implements OnInit {
   public searchCurrent: string = "";
   public tab: number = 0;
 
-  public testFavoris = [
-    {
-      diplome: "l3 informatique",
-      chips: [
-        "l3info_td1",
-        "l3info_td2",
-        "l3info_td3"
-      ],
-      url: "https://edt-api.univ-avignon.fr/app.php/api/events_tdoption/9756-9757-9758-9759-9761-9753-9754-9755"
-    }
-  ]
-
   // eventSource = this.API.loadCalendar(this.API.edtSelected);
   eventSource = [];
 
@@ -75,9 +63,16 @@ export class FormationsPage implements OnInit {
 
   doRefresh(event) {
     setTimeout(() => {
-      this.DB.getFavorites();
-      event.target.complete();
-    }, 2000);
+
+      if (this.tab === 0) {
+        this.DB.getFavorites();        
+      }
+      else if (this.tab === 1) {
+        this.API.getAllPromos();        
+      }
+
+      event.target.complete();      
+    }, 1000);
   }
 
 }

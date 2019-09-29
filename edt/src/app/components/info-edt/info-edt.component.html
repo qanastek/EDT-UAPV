@@ -33,7 +33,7 @@
           text-transform: uppercase;
         "
       >
-        Cours
+        {{this.startTime | date:'HH:mm'}} - {{this.endTime | date:'HH:mm'}} / {{this.type}}
       </p>
     </div>
 
@@ -54,24 +54,32 @@
         Informations sur le cours:
       </p>
 
+      <!-- Matière -->
       <p>
-        {{this.title}}
+        {{this.matiere}}
+      </p>
+
+      <!-- Enseignant -->
+      <p>
+        {{this.enseignant}}
+      </p>
+
+      <!-- TD -->
+      <p>
+        {{this.td}}
       </p>
       
+      <!-- Salle -->
       <p>
-        {{this.startTime}}
+        {{this.salle}}
       </p>
       
-      <p>
-        {{this.endTime}}
+      <p *ngIf="this.desc" >
+        Description: {{this.desc}}
       </p>
-      
-      <p>
-        {{this.allDay}}
-      </p>
-      
-      <p>
-        {{this.desc}}
+
+      <p *ngIf="this.type" >
+        Type: {{this.type}}
       </p>
 
       <ion-button 
