@@ -40,14 +40,28 @@ ion-col
     }
 }
 
+// Week view
 .weekview-allday-table {
-    display: none;
+    display: none !important;
 }
 
 .weekview-allday-label {
-    display: none;
+    display: none !important;
 }
     
 .weekview-normal-event-container {
-    margin-top: 37px;
+    margin-top: 37px !important;
+}
+
+// Day view
+.dayview-allday-table {
+    display: none !important;
+}
+
+.dayview-normal-event-container {
+    margin-top: 0px !important;
+}
+
+.dayview-allday-content-wrapper {
+    height: 0px !important;
 }

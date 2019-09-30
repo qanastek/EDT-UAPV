@@ -59,13 +59,19 @@ export class EdtPage implements OnInit {
   }
 
   async presentModal(event) {
+
+    var matiere = event.title.slice(0, event.title.indexOf("Enseignant"));
+    var enseignant = event.title.slice(event.title.indexOf("Enseignant"), event.title.indexOf("TD"));
+    var td = event.title.slice(event.title.indexOf("TD"), event.title.indexOf("Salle"));
+    var salle = event.title.slice(event.title.indexOf("Salle"), event.title.indexOf("Type"));
+
     const modal = await this.modalController.create({
       component: InfoEdtComponent,
       componentProps: {
-        'matiere': event.title.slice(0, event.title.indexOf("Enseignant")),
-        'enseignant': event.title.slice(event.title.indexOf("Enseignant"), event.title.indexOf("TD")),
-        'td': event.title.slice(event.title.indexOf("TD"), event.title.indexOf("Salle")),
-        'salle': event.title.slice(event.title.indexOf("Salle"), event.title.indexOf("Type")),
+        'matiere': matiere.slice(matiere.indexOf(":") + 2, matiere.length),
+        'enseignant': enseignant.slice(enseignant.indexOf(":") + 2, enseignant.length),
+        'td': td.slice(td.indexOf(":") + 2, td.length),
+        'salle': salle.slice(salle.indexOf(":") + 2, salle.length),
         
         'startTime': event.startTime,
         'endTime': event.endTime, 

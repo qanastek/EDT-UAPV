@@ -15,7 +15,7 @@
 
     <!-- Header -->
     <div
-      class="badAnswer"
+      class="info-item"
       style="
         text-align: center;
         color: #ffffff;
@@ -45,7 +45,7 @@
         padding-right: 6%;
         padding-bottom: 4%;
         height: 80%;
-        text-align: center;
+        text-align: left;
         border-bottom-right-radius: 25px;
         border-bottom-left-radius: 25px;
       "
@@ -55,31 +55,31 @@
       </p>
 
       <!-- Matière -->
-      <p>
-        {{this.matiere}}
+      <p *ngIf="this.matiere" >
+        <b>Matière :</b> {{this.matiere}}
       </p>
 
       <!-- Enseignant -->
-      <p>
-        {{this.enseignant}}
+      <p *ngIf="this.enseignant" >
+        <b>Enseignant :</b> {{this.enseignant}}
       </p>
 
       <!-- TD -->
-      <p>
-        {{this.td}}
+      <p *ngIf="this.td" >
+        <b>TD :</b> {{this.td}}
       </p>
       
       <!-- Salle -->
-      <p>
-        {{this.salle}}
+      <p *ngIf="this.salle" >
+        <b>Salle :</b> {{this.salle}}
       </p>
       
       <p *ngIf="this.desc" >
-        Description: {{this.desc}}
+        <b>Description :</b> {{this.desc}}
       </p>
 
       <p *ngIf="this.type" >
-        Type: {{this.type}}
+        <b>Type :</b> {{this.type}}
       </p>
 
       <ion-button 
@@ -87,7 +87,7 @@
         expand="full"
         shape="round"
         size="large"
-        color="retry"
+        color="info-item"
         style="color: #804f00; padding-top: 3%;"
       >
         Fermer
