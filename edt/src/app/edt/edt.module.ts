@@ -1,5 +1,5 @@
 import { ComponentsModule } from './../components/components';
-import { NgCalendarModule } from 'ionic2-calendar';
+import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +21,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    NgCalendarModule,
+    FullCalendarModule,
     ComponentsModule,
     RouterModule.forChild(routes)
   ],

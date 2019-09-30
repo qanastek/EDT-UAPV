@@ -25,6 +25,9 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+
 ion-col
 {
     padding: 0%;
@@ -40,28 +43,28 @@ ion-col
     }
 }
 
-// Week view
-.weekview-allday-table {
-    display: none !important;
-}
+// // Week view
+// .weekview-allday-table {
+//     display: none !important;
+// }
 
-.weekview-allday-label {
-    display: none !important;
-}
+// .weekview-allday-label {
+//     display: none !important;
+// }
     
-.weekview-normal-event-container {
-    margin-top: 37px !important;
-}
+// .weekview-normal-event-container {
+//     margin-top: 37px !important;
+// }
 
-// Day view
-.dayview-allday-table {
-    display: none !important;
-}
+// // Day view
+// .dayview-allday-table {
+//     display: none !important;
+// }
 
-.dayview-normal-event-container {
-    margin-top: 0px !important;
-}
+// .dayview-normal-event-container {
+//     margin-top: 0px !important;
+// }
 
-.dayview-allday-content-wrapper {
-    height: 0px !important;
-}
+// .dayview-allday-content-wrapper {
+//     height: 0px !important;
+// }

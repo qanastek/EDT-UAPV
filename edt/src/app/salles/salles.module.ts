@@ -1,4 +1,3 @@
-import { NgCalendarModule } from 'ionic2-calendar';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +19,6 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    NgCalendarModule,
     RouterModule.forChild(routes)
   ],
   declarations: [SallesPage]

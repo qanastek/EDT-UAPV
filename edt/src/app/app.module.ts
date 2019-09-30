@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { NgCalendarModule  } from 'ionic2-calendar';
+import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
 
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
@@ -25,7 +25,7 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgCalendarModule,
+    FullCalendarModule,
     IonicModule.forRoot(),
     AppRoutingModule
   ],
