@@ -27,6 +27,10 @@
 * https://www.npmjs.com/package/ionic2-calendar
 * https://www.youtube.com/watch?v=uWhfwhN5IZc
 
+* https://fullcalendar.io/docs/angular
+* https://stackblitz.com/edit/fullcalendar-angular-demo
+* https://github.com/mattlewis92/angular-calendar
+
 # TODO:
 
 - [x] Faire un service qui regroupe toutes les variables contenant les JSON
