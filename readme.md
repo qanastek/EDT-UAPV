@@ -1,4 +1,4 @@
-# V3
+# V3 angular-calendar
 
 https://stackblitz.com/edit/angular-r5ehut-zzsigg?file=demo/component.ts
 https://github.com/mattlewis92/angular-calendar
