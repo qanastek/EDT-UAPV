@@ -2,41 +2,95 @@
 
   <div *ngIf="this.edt" style="height: 100vh !important;">
 
-    <ion-button (click)="this.switchToDay()">JOURS</ion-button>
-    <ion-button (click)="this.switchToWeek()">SEMAINE</ion-button>
-    <ion-button (click)="this.switchToListWeek()">MOIS</ion-button>
+    <!-- DAY / WEEK / MONTH -->
+    <ion-button (click)="view = 'day'" [class.active]="view === 'day'">
+      JOURS
+    </ion-button>
 
-    <p id="test1">Rien</p>
+    <ion-button (click)="view = 'week'" [class.active]="view === 'week'">
+      SEMAINE
+    </ion-button>
 
-    <full-calendar
-      id="calendar"
-      defaultView="dayGridWeek"
-      [displayEventTime]="true"
-      [locale]="'fr'"
-      [header]="{
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,dayGridWeek,dayGridDay'
-      }"
-      [plugins]="this.calendarPlugins"
-      [weekends]="false"
+    <ion-button (click)="view = 'month'" [class.active]="view === 'month'">
+      MOIS
+    </ion-button>
+
+    <br>
+
+    <!-- PREV / TODAY / NEXT -->
+    <ion-button 
+      [view]="view"
+      [(viewDate)]="viewDate"
+      [excludeDays]="excludeDays"
+      mwlCalendarPreviousView
+    >
+      <
+    </ion-button>
+
+    <ion-button 
+      mwlCalendarToday
+      [(viewDate)]="viewDate"
+    >
+      TODAY
+    </ion-button>
+
+    <ion-button
+      mwlCalendarNextView
+      [view]="view"
+      [(viewDate)]="viewDate"
+      [excludeDays]="excludeDays"
+    >
+      >
+    </ion-button>
+
+    <!-- Template des cases WEEK / DAY -->
+    <!-- <ng-template #customCellTemplate let-day="day" let-locale="locale">
+      <div class="cal-cell-top">
+        <span class="cal-day-badge" *ngIf="day.badgeTotal > 0"
+          >{{ day.badgeTotal }}</span
+        >
+        <span class="cal-day-number"
+          >{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span
+        >
+      </div>
+      <small style="margin: 5px"
+        >There are {{ day.events.length }} events on this day</small
+      >
+    </ng-template> -->
+    
+    <!-- Les différentes vues -->
+    <div [ngSwitch]="this.view">
+
+      <mwl-calendar-day-view
+      *ngSwitchCase="'day'"
+      [viewDate]="viewDate"
       [events]="this.API.loadCalendar(this.edt)"
-    ></full-calendar>
+      [dayStartHour]="8"
+      [dayEndHour]="20"
+      [locale]="this.locale"
+      ></mwl-calendar-day-view>
 
-    <!-- <full-calendar displayEventTime="true" defaultView="dayGridWeek" [plugins]="this.calendarPlugins" [events]="this.API.loadCalendar(this.edt)"></full-calendar> -->
+      <mwl-calendar-week-view
+      *ngSwitchCase="'week'"
+      [viewDate]="viewDate"
+      [events]="this.API.loadCalendar(this.edt)"
+      [dayStartHour]="8"
+      [dayEndHour]="20"
+      [locale]="this.locale"
+      [weekStartsOn]="1"
+      [excludeDays]="excludeDays"
+      ></mwl-calendar-week-view>
 
-    <!--  [markDisabled]="disableWeekEnd" -->
-    <!-- <calendar
-      [eventSource]="this.API.loadCalendar(this.edt)"
-      [calendarMode]="this.calendar.mode"
-      [currentDate]="this.calendar.currentDate"
-      [step]="30"
-      [startHour]="8"
-      [endHour]="21"
-      [startingDayWeek]="1"
-      [locale]="'en-GB'"
-      (onEventSelected)="this.clickItem($event)"
-    ></calendar> -->
+      <mwl-calendar-month-view
+      *ngSwitchCase="'month'"
+      [viewDate]="viewDate"
+      [events]="this.API.loadCalendar(this.edt)"
+      [locale]="this.locale"
+      [weekStartsOn]="1"
+      [excludeDays]="excludeDays"
+      ></mwl-calendar-month-view>
+
+    </div>
 
   </div>
 

@@ -1,11 +1,23 @@
 import { InfoEdtComponent } from './../components/info-edt/info-edt.component';
 import { ApiService } from './../services/api.service';
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild, TemplateRef, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { registerLocaleData } from '@angular/common';
 
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr);
+
+import {
+  CalendarEvent,
+  CalendarEventAction,
+  CalendarEventTimesChangedEvent,
+  CalendarView
+} from 'angular-calendar';
 
 import * as $ from 'jquery';
 
@@ -16,17 +28,24 @@ import * as $ from 'jquery';
 })
 export class EdtPage implements OnInit {
 
-  calendar = {
-    currentDate: new Date(),
-    mode: 'dayGridMonth'
-  };
+  // Locale
+  locale: string = 'fr';
+
+  // Jours qui ne s'affiche pas
+  excludeDays: number[] = [0,6];
+
+  // Vue actuelle
+  view: CalendarView = CalendarView.Week;
+
+  // Date actuelle de la vue
+  viewDate: Date = new Date();
+
+  CalendarView = CalendarView;
 
   // agendaDay
   public calendarPlugins = [dayGridPlugin, interactionPlugin];
 
   public edt: any;
-  
-  // edt = JSON.parse(this.route.snapshot.paramMap.get('edt'));
 
   constructor(
     public API: ApiService,
@@ -37,7 +56,6 @@ export class EdtPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.calendar.mode = 'week';
 
     switch (this.route.snapshot.params.value) {
 
@@ -91,31 +109,6 @@ export class EdtPage implements OnInit {
       cssClass: 'info-edt'
     });
     return await modal.present();
-  }
-
-  switchToDay() {
-    $('#test1').css({color: "red"});
-    (<any>$('#calendar')).fullCalendar('changeView', 'dayGridWeek');
-    $('#test1').css({color: "blue"});
-    
-    // $(this.el.nativeElement).fullCalendar('changeView', 'dayGridWeek');
-    // ($('#calendar') as any).fullCalendar('changeView', 'dayGridWeek');
-    
-    // (document.getElementById('calendar') as any).fullCalendar('changeView', 'timeGridDay');
-  }
-
-  switchToWeek() {
-    ($('#calendar') as any).fullCalendar('changeView', 'dayGridWeek');
-    console.log($('#calendar'));
-    
-    // (document.getElementById('calendar') as any).fullCalendar('changeView', 'dayGridWeek');
-  }
-  
-  switchToListWeek() {
-    ($('#calendar') as any).fullCalendar('changeView', 'listWeek');
-    console.log($('#calendar'));
-    
-    // (document.getElementById('calendar') as any).fullCalendar('changeView', 'listWeek');
   }
 
   clickItem(event) {

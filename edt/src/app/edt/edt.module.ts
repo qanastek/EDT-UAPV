@@ -1,5 +1,4 @@
 import { ComponentsModule } from './../components/components';
-import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -8,6 +7,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { EdtPage } from './edt.page';
+
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 const routes: Routes = [
   {
@@ -21,7 +23,10 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    FullCalendarModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
     ComponentsModule,
     RouterModule.forChild(routes)
   ],

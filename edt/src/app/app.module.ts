@@ -11,10 +11,13 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
-
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -25,9 +28,13 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FullCalendarModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   providers: [
     StatusBar,

@@ -2,6 +2,7 @@ import { diplomes } from './../interfaces/diplomes';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { CalendarEvent } from 'angular-calendar';
 
 @Injectable({
   providedIn: 'root'
@@ -248,53 +249,77 @@ export class ApiService {
   }
 
   public loadCalendar(edt: any) {
-    var send = [];
+    var send: CalendarEvent[] = [];
     
-    var color: string;
-    var borderColor: string;
-    var textColor: string;
+    var color: any;
+    // var borderColor: string;
+    // var textColor: string;
 
     edt.forEach(item => {
 
       switch (item.type) {
 
         case "UEO":
-          color = "rgb(141, 213, 142)";
-          borderColor = "rgb(141, 213, 142)";
-          textColor = "#ffffff";
+          color = {
+            primary: "#ffffff",
+            secondary: "#8dd58e"
+          }
+          // color = "#8dd58e";
+          // borderColor = "#8dd58e";
+          // textColor = "#ffffff";
           break;
 
         case "Annulation":
-          color = "#eaeef2";
-          borderColor = "#eaeef2";
-          textColor = "#b2b2b2";
+          color = {
+            primary: "#b2b2b2",
+            secondary: "#eaeef2"
+          }
+          // color = "#eaeef2";
+          // borderColor = "#eaeef2";
+          // textColor = "#b2b2b2";
           break;
       
         default:
-          color = "#d1e8ff"; 
-          borderColor = "#d1e8ff"; 
-          textColor = "#1e90ff"; 
+          color = {
+            primary: "#1e90ff",
+            secondary: "#d1e8ff"
+          }
+          // color = "#d1e8ff"; 
+          // borderColor = "#d1e8ff"; 
+          // textColor = "#1e90ff"; 
           break;
       }
 
       send.push({
-        id: "",
-        groupId: "",
-        allDay: false,
-        backgroundColor: color,
-        borderColor: borderColor,
-        textColor: textColor,
         title: item.title,
         start: new Date(item.start),
         end: new Date(item.end),
-        allDayDefault: false,
-        editable: false,
-        startEditable: false,
-        durationEditable: false,
-        resourceEditable: false,
-        desc: item.memo,
-        type: item.type
+        color: color,
+        draggable: false,
+        allDay: false,
+        resizable: {
+          beforeStart: false,
+          afterEnd: false
+        }
       });
+
+      // send.push({
+      //   allDay: false,
+      //   backgroundColor: color,
+      //   borderColor: borderColor,
+      //   textColor: textColor,
+      //   title: item.title,
+      //   start: new Date(item.start),
+      //   end: new Date(item.end),
+      //   allDayDefault: false,
+      //   editable: false,
+      //   draggable: false,
+      //   startEditable: false,
+      //   durationEditable: false,
+      //   resourceEditable: false,
+      //   desc: item.memo,
+      //   type: item.type
+      // });
       
     });
     
