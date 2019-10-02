@@ -75,4 +75,4 @@ https://github.com/mattlewis92/angular-calendar
 - [x] Factorisé le code de sorte à utilisé un component avec un input de type function
   - [x] Faire facto de EDT
 - [x] Mettre le lazy load des résultat de l'UI, ion-infinite-scroll ?
-- [ ] Ajouter cours restants avant la fin de l'année
+- [ ] Ajouter le compteur de cours restants avant la fin de l'année
