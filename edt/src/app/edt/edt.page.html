@@ -70,6 +70,14 @@
       [locale]="this.locale"
       ></mwl-calendar-day-view>
 
+      <ng-template 
+        #headerTemplate 
+        let-dayEvent="dayEvent"
+        let-locale="locale"
+      >
+        Day: {{dayEvent.event.start}}
+      </ng-template>
+
       <mwl-calendar-week-view
       *ngSwitchCase="'week'"
       [viewDate]="viewDate"
@@ -78,6 +86,7 @@
       [dayEndHour]="20"
       [locale]="this.locale"
       [weekStartsOn]="1"
+      [eventTemplate]="headerTemplate"
       [excludeDays]="excludeDays"
       ></mwl-calendar-week-view>
 
