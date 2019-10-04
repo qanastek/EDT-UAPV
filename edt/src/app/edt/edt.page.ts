@@ -74,6 +74,8 @@ export class EdtPage implements OnInit {
     var enseignant = event.title.slice(event.title.indexOf("Enseignant"), event.title.indexOf("TD"));
     var td = event.title.slice(event.title.indexOf("TD"), event.title.indexOf("Salle"));
     var salle = event.title.slice(event.title.indexOf("Salle"), event.title.indexOf("Type"));
+    var type = event.title.slice(event.title.indexOf("Type"), event.title.length);
+    // type.slice(type.indexOf(":") + 2, type.length)
 
     const modal = await this.modalController.create({
       component: InfoEdtComponent,
@@ -83,44 +85,19 @@ export class EdtPage implements OnInit {
         'td': td.slice(td.indexOf(":") + 2, td.length),
         'salle': salle.slice(salle.indexOf(":") + 2, salle.length),
         
-        'startTime': event.startTime,
-        'endTime': event.endTime, 
+        'startTime': event.start,
+        'endTime': event.end, 
         'allDay': event.allDay,
-        'desc': event.desc,
-        'type': event.type
+        'desc': event.extendedProps.description,
+        'type': event.extendedProps.type
       },
       cssClass: 'info-edt'
     });
     return await modal.present();
   }
 
-  switchToDay() {
-    $('#test1').css({color: "red"});
-    (<any>$('#calendar')).fullCalendar('changeView', 'dayGridWeek');
-    $('#test1').css({color: "blue"});
-    
-    // $(this.el.nativeElement).fullCalendar('changeView', 'dayGridWeek');
-    // ($('#calendar') as any).fullCalendar('changeView', 'dayGridWeek');
-    
-    // (document.getElementById('calendar') as any).fullCalendar('changeView', 'timeGridDay');
-  }
-
-  switchToWeek() {
-    ($('#calendar') as any).fullCalendar('changeView', 'dayGridWeek');
-    console.log($('#calendar'));
-    
-    // (document.getElementById('calendar') as any).fullCalendar('changeView', 'dayGridWeek');
-  }
-  
-  switchToListWeek() {
-    ($('#calendar') as any).fullCalendar('changeView', 'listWeek');
-    console.log($('#calendar'));
-    
-    // (document.getElementById('calendar') as any).fullCalendar('changeView', 'listWeek');
-  }
-
-  clickItem(event) {
-    this.presentModal(event);     
+  clickItem(item) {            
+    this.presentModal(item.event);
   }
 
 }

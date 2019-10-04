@@ -39,12 +39,12 @@
 - [x] Faire un fichier par interface
 - [x] Fix calendar height
 - [x] Faire le remove()
-- [ ] Ajouter les buttons:
+- [x] Ajouter les buttons:
   - [x] Day
   - [x] Week
   - [x] Month
-  - [ ] Today
-- [ ] Supprimmer la section "all day"
+  - [x] Today
+- [x] Supprimmer la section "all day"
 - [ ] Faire le onClick item pour les EDT
   - [ ] Mettre memo
   - [ ] Ajouter popup
@@ -77,7 +77,7 @@
   - [x] Faire facto de EDT
 - [x] Mettre le lazy load des résultat de l'UI, ion-infinite-scroll ?
 - [ ] Ajouter cours restants avant la fin de l'année
-- [ ] Finir la branche angular_6_plus
+- [x] Finir la branche angular_6_plus
 
 FIX:
 - [x] Fix les horraires latérale

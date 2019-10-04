@@ -247,7 +247,8 @@ export class ApiService {
     
   }
 
-  public loadCalendar(edt: any) {
+  public loadCalendar(edt: any) {;
+    
     var send = [];
     
     var color: string;
@@ -275,7 +276,7 @@ export class ApiService {
           borderColor = "#d1e8ff"; 
           textColor = "#1e90ff"; 
           break;
-      }
+      }      
 
       send.push({
         id: "",
@@ -292,8 +293,10 @@ export class ApiService {
         startEditable: false,
         durationEditable: false,
         resourceEditable: false,
-        desc: item.memo,
-        type: item.type
+        extendedProps: {
+          description: item.memo,
+          type: item.type
+        }
       });
       
     });
