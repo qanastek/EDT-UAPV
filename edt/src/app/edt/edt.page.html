@@ -2,22 +2,25 @@
 
   <div *ngIf="this.edt" style="height: 100vh !important;">
 
-    <ion-button (click)="this.calendar.mode = 'day'">JOURS</ion-button>
-    <ion-button (click)="this.calendar.mode = 'week'">SEMAINE</ion-button>
-    <ion-button (click)="this.calendar.mode = 'month'">MOIS</ion-button>
-
-    <!--  [markDisabled]="disableWeekEnd" -->
-    <calendar
-      [eventSource]="this.API.loadCalendar(this.edt)"
-      [calendarMode]="this.calendar.mode"
-      [currentDate]="this.calendar.currentDate"
-      [step]="30"
-      [startHour]="8"
-      [endHour]="21"
-      [startingDayWeek]="1"
-      [locale]="'en-GB'"
-      (onEventSelected)="this.clickItem($event)"
-    ></calendar>
+    <full-calendar
+      id="calendar"
+      [events]="this.API.loadCalendar(this.edt)"
+      defaultView="timeGridWeek"
+      [displayEventTime]="true"
+      [locale]="'fr'"
+      [header]="{
+        left: 'prev,next today',
+        center: '',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      }"
+      [plugins]="this.calendarPlugins"
+      [weekends]="false"
+      minTime="08:00:00"
+      maxTime="20:00:00"
+      slotDuration="00:30:00"
+      [nowIndicator]="true"
+      [allDaySlot]="false"
+    ></full-calendar>
 
   </div>
 

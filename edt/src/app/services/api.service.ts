@@ -249,20 +249,56 @@ export class ApiService {
 
   public loadCalendar(edt: any) {
     var send = [];
+    
+    var color: string;
+    var borderColor: string;
+    var textColor: string;
 
     edt.forEach(item => {
+
+      switch (item.type) {
+
+        case "UEO":
+          color = "rgb(141, 213, 142)";
+          borderColor = "rgb(141, 213, 142)";
+          textColor = "#ffffff";
+          break;
+
+        case "Annulation":
+          color = "#eaeef2";
+          borderColor = "#eaeef2";
+          textColor = "#b2b2b2";
+          break;
       
+        default:
+          color = "#d1e8ff"; 
+          borderColor = "#d1e8ff"; 
+          textColor = "#1e90ff"; 
+          break;
+      }
+
       send.push({
-        title: item.title,
-        startTime: new Date(item.start),
-        endTime: new Date(item.end),
+        id: "",
+        groupId: "",
         allDay: false,
+        backgroundColor: color,
+        borderColor: borderColor,
+        textColor: textColor,
+        title: item.title,
+        start: new Date(item.start),
+        end: new Date(item.end),
+        allDayDefault: false,
+        editable: false,
+        startEditable: false,
+        durationEditable: false,
+        resourceEditable: false,
         desc: item.memo,
         type: item.type
       });
       
     });
     
+    // return send.slice(0, 15);
     return send;
   }
 

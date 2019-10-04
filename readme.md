@@ -1,3 +1,5 @@
+# V2
+
 # New Visual Studio Shortcuts
 
 * Write /** and press TAB | It's make a javadocs style comment with param and returns
@@ -75,4 +77,8 @@
   - [x] Faire facto de EDT
 - [x] Mettre le lazy load des résultat de l'UI, ion-infinite-scroll ?
 - [ ] Ajouter cours restants avant la fin de l'année
+<<<<<<< HEAD
 - [ ] Finir la branche angular_6_plus
+
+FIX:
+- [ ] Fix les horraires latérale

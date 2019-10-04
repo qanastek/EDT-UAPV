@@ -1,8 +1,14 @@
 import { InfoEdtComponent } from './../components/info-edt/info-edt.component';
 import { ApiService } from './../services/api.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-edt',
@@ -13,8 +19,11 @@ export class EdtPage implements OnInit {
 
   calendar = {
     currentDate: new Date(),
-    mode: 'week'
+    mode: 'dayGridWeek'
   };
+
+  // agendaDay
+  public calendarPlugins = [dayGridPlugin, interactionPlugin, timeGridPlugin];
 
   public edt: any;
   
@@ -24,12 +33,13 @@ export class EdtPage implements OnInit {
     public API: ApiService,
     public route: ActivatedRoute,
     public router: Router,
-    public modalController: ModalController
+    public modalController: ModalController,
+    private el: ElementRef
   ) { }
 
   ngOnInit() {
     this.calendar.mode = 'week';
-    
+
     switch (this.route.snapshot.params.value) {
 
       case "formations":
@@ -82,6 +92,31 @@ export class EdtPage implements OnInit {
       cssClass: 'info-edt'
     });
     return await modal.present();
+  }
+
+  switchToDay() {
+    $('#test1').css({color: "red"});
+    (<any>$('#calendar')).fullCalendar('changeView', 'dayGridWeek');
+    $('#test1').css({color: "blue"});
+    
+    // $(this.el.nativeElement).fullCalendar('changeView', 'dayGridWeek');
+    // ($('#calendar') as any).fullCalendar('changeView', 'dayGridWeek');
+    
+    // (document.getElementById('calendar') as any).fullCalendar('changeView', 'timeGridDay');
+  }
+
+  switchToWeek() {
+    ($('#calendar') as any).fullCalendar('changeView', 'dayGridWeek');
+    console.log($('#calendar'));
+    
+    // (document.getElementById('calendar') as any).fullCalendar('changeView', 'dayGridWeek');
+  }
+  
+  switchToListWeek() {
+    ($('#calendar') as any).fullCalendar('changeView', 'listWeek');
+    console.log($('#calendar'));
+    
+    // (document.getElementById('calendar') as any).fullCalendar('changeView', 'listWeek');
   }
 
   clickItem(event) {
