@@ -2,41 +2,25 @@
 
   <div *ngIf="this.edt" style="height: 100vh !important;">
 
-    <ion-button (click)="this.switchToDay()">JOURS</ion-button>
-    <ion-button (click)="this.switchToWeek()">SEMAINE</ion-button>
-    <ion-button (click)="this.switchToListWeek()">MOIS</ion-button>
-
-    <p id="test1">Rien</p>
-
     <full-calendar
       id="calendar"
-      defaultView="dayGridWeek"
+      [events]="this.API.loadCalendar(this.edt)"
+      defaultView="timeGridWeek"
       [displayEventTime]="true"
       [locale]="'fr'"
       [header]="{
         left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,dayGridWeek,dayGridDay'
+        center: '',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
       }"
       [plugins]="this.calendarPlugins"
       [weekends]="false"
-      [events]="this.API.loadCalendar(this.edt)"
+      minTime="08:00:00"
+      maxTime="20:00:00"
+      slotDuration="00:30:00"
+      [nowIndicator]="true"
+      [allDaySlot]="false"
     ></full-calendar>
-
-    <!-- <full-calendar displayEventTime="true" defaultView="dayGridWeek" [plugins]="this.calendarPlugins" [events]="this.API.loadCalendar(this.edt)"></full-calendar> -->
-
-    <!--  [markDisabled]="disableWeekEnd" -->
-    <!-- <calendar
-      [eventSource]="this.API.loadCalendar(this.edt)"
-      [calendarMode]="this.calendar.mode"
-      [currentDate]="this.calendar.currentDate"
-      [step]="30"
-      [startHour]="8"
-      [endHour]="21"
-      [startingDayWeek]="1"
-      [locale]="'en-GB'"
-      (onEventSelected)="this.clickItem($event)"
-    ></calendar> -->
 
   </div>
 

@@ -24,6 +24,8 @@
     "@fullcalendar/core": "^4.3.1",
     "@fullcalendar/daygrid": "^4.3.0",
     "@fullcalendar/interaction": "^4.3.0",
+    "@fullcalendar/list": "^4.3.0",
+    "@fullcalendar/timegrid": "^4.3.0",
     "@ionic-native/calendar": "^5.14.0",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/splash-screen": "^5.0.0",

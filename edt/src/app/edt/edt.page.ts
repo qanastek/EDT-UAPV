@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 
 import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 
 import * as $ from 'jquery';
@@ -18,11 +19,11 @@ export class EdtPage implements OnInit {
 
   calendar = {
     currentDate: new Date(),
-    mode: 'dayGridMonth'
+    mode: 'dayGridWeek'
   };
 
   // agendaDay
-  public calendarPlugins = [dayGridPlugin, interactionPlugin];
+  public calendarPlugins = [dayGridPlugin, interactionPlugin, timeGridPlugin];
 
   public edt: any;
   
