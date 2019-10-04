@@ -270,6 +270,12 @@ export class ApiService {
           borderColor = "#eaeef2";
           textColor = "#b2b2b2";
           break;
+
+        case "Evaluation":
+          color = "#ef5151";
+          borderColor = "#ef5151";
+          textColor = "#ffffff";
+          break;
       
         default:
           color = "#d1e8ff"; 
