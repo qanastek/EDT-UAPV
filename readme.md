@@ -67,9 +67,9 @@
   - [x] Faire la fonction de suppression
 - [x] Fix le retour lors de la création du favori
 - [x] Remplacer la search bar de groupe pour des checkbox de sortent à pouvoir afficher plusieurs groupes à la fois
-- [ ] Fix nom prénom désordre
-  - [ ] Driss Matrouf
-  - [ ] Matrouf Driss
+- [x] Fix nom prénom désordre
+  - [x] Driss Matrouf
+  - [x] Matrouf Driss
 - [ ] Send GET request only if internet is ON
 - [ ] Faire le system de caching avec la vérification de date
 - [ ] A chaque recherche enregistrer celle-ci dans une table de sorte à pouvoir savoir quelle est la recherche la plus chercher et la mêttre en tête de resultat
@@ -81,5 +81,4 @@
 
 FIX:
 - [x] Fix les horraires latérale
-- [ ] Finir la branche angular_6_plus
-  - [ ] eventTemplate
+- [x] Finir la branche fullcalendar_official

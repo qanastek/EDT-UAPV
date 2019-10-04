@@ -18,9 +18,9 @@
         <div *ngFor="let section of this.API.profs" class="prof">
           <div *ngFor="let prof of section.names">
     
-            <!-- Si le nom de l'UE contient l'input -->
+            <!-- Si le nom de l'enseignant contient le nom/prénom recherché -->
             <ion-item
-              *ngIf="prof.name.toLowerCase().includes(this.searchCurrent.toLowerCase())"
+              *ngIf="this.containtSearch(prof.name) == true"
               (click)="this.API.getEdtProf(prof.uapvHarpege)"
             >
               <ion-label>
