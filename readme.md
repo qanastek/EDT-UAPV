@@ -1,6 +1,6 @@
 # Emploi du temps pour l'université d'Avignon
 
-# Liste des requêtes
+# Liste des requêtes à l'API de l'UAPV
 
 * Statut du serveur: https://edt-api.univ-avignon.fr/app.php/api/isOpen
 
