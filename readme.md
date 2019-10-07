@@ -1,4 +1,4 @@
-# V2
+# Emploi du temps pour l'université d'Avignon
 
 # New Visual Studio Shortcuts
 
