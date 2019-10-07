@@ -1,9 +1,5 @@
 # Emploi du temps pour l'université d'Avignon
 
-# New Visual Studio Shortcuts
-
-* Write /** and press TAB | It's make a javadocs style comment with param and returns
-
 # Liste des requêtes
 
 * Statut du serveur: https://edt-api.univ-avignon.fr/app.php/api/isOpen
@@ -32,3 +28,7 @@
 * https://fullcalendar.io/docs/angular
 * https://stackblitz.com/edit/fullcalendar-angular-demo
 * https://github.com/mattlewis92/angular-calendar
+
+# New Visual Studio Shortcuts
+
+* Write /** and press TAB | It's make a javadocs style comment with param and returns
