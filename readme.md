@@ -1,4 +1,4 @@
-# Emploi du temps pour l'université d'Avignon
+# Emploi du temps pour l'université d'Avignon - V1
 
 # Liste des requêtes à l'API de l'UAPV
 
