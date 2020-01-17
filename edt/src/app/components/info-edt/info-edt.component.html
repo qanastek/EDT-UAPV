@@ -7,7 +7,7 @@
 
       position: absolute;
       left: 50vw;
-      top: 40vh;
+      top: 38vh;
       margin-left: -150px;
       margin-top: -150px;
     "
@@ -15,7 +15,7 @@
 
     <!-- Header -->
     <div
-      class="{{ this.getCss(this.type) }}"
+      class="{{ this.getCss() }}"
       style="
         text-align: center;
         color: #ffffff;
@@ -50,6 +50,7 @@
         border-bottom-left-radius: 25px;
       "
     >
+
       <p style="margin-top: 0%; padding-top: 6%;">
         Informations sur le cours:
       </p>
@@ -84,15 +85,31 @@
       </p>
 
       <p *ngIf="this.type" >
-        <b>Type :</b> {{this.type}}
+        <b>Type: </b> {{this.type}}
       </p>
+    
+      <div>
+        <ion-row text-center>
+          
+          <ion-col>
+            <ion-fab-button size="small" (click)="alarmItem()" float-left>
+              <ion-icon name="alarm"></ion-icon>
+            </ion-fab-button>
+            
+            <ion-fab-button size="small" (click)="rememberItem()" float-left>
+              <ion-icon name="calendar"></ion-icon>
+            </ion-fab-button>
+          </ion-col>
+
+        </ion-row>
+      </div>
 
       <ion-button 
         (click)="goBack()"
         expand="full"
         shape="round"
         size="large"
-        color="{{ this.getCss(this.type) }}"
+        color="{{ this.getCss() }}"
         style="color: #804f00; padding-top: 3%;"
       >
         Fermer

@@ -36,9 +36,9 @@ export class InfoEdtComponent implements OnInit {
     await this.modalController.dismiss();
   }
 
-  getCss(type: string): string {
+  getCss(): string {
 
-    type = type.toLowerCase();
+    var type = this.type.toLowerCase();
 
     switch (type) {
 
@@ -54,6 +54,16 @@ export class InfoEdtComponent implements OnInit {
 
   goBack() {
     this.close();
+  }
+
+  rememberItem(): void {
+    // Save in calendar
+    // https://ionicframework.com/docs/enterprise/calendar
+  }
+
+  alarmItem(): void {
+    // Save in calendar
+    // https://ionicframework.com/docs/enterprise/calendar
   }
 
 }
