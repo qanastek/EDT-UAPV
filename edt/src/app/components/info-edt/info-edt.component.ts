@@ -36,6 +36,22 @@ export class InfoEdtComponent implements OnInit {
     await this.modalController.dismiss();
   }
 
+  getCss(type: string): string {
+
+    type = type.toLowerCase();
+
+    switch (type) {
+
+      case "ueo":
+      case "annulation":
+      case "evaluation":
+        return type;
+    
+      default:
+        return "defaultInfo";
+    }    
+  }
+
   goBack() {
     this.close();
   }

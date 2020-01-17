@@ -46,12 +46,24 @@ export class FormationsPage implements OnInit {
 
   loadEdt(URL: string) {
 
+    this.API.loading();
+
     // Requête de récupération de l'EDT 
     this.http.get(URL).subscribe((response: any) => {
-      this.API.edtSelected = response.results;
 
-      // Redirection vers l'EDT
-      this.router.navigate(["edt", "formations"]);     
+      if (response.status == 0) {
+        console.log("Server doesnt response -------------");
+        this.API.loadingModal.dismiss();
+        // Error message: Server unvailables
+      } else {
+
+        this.API.edtSelected = response.results;
+  
+        this.API.loadingModal.dismiss();
+        
+        // Redirection vers l'EDT
+        this.router.navigate(["edt", "formations"]);
+      } 
     });   
 
   }

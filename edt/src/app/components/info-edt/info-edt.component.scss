@@ -1,3 +1,60 @@
-.info-item {
-    background: linear-gradient(160deg, #f6a90f 0%, #d11702 100%) !important;
+.defaultInfo {
+    background: linear-gradient(160deg, #a9d5ff 0%, #a9d5ff 100%) !important;
+}
+
+.ueo {
+    background: linear-gradient(160deg, #8dd490 0%, #8dd490 100%) !important;
+}
+
+.annulation {
+    background: linear-gradient(160deg, #808080 0%, #808080 100%) !important;
+}
+
+.evaluation {
+    background: linear-gradient(160deg, #ef5151 0%, #ef5151 100%) !important;
+}
+
+
+.ion-color-defaultInfo
+{
+  --ion-color-base: linear-gradient(160deg, #a9d5ff 0%, #a9d5ff 100%) !important;
+  --ion-color-base-rgb: 255,255,0;
+  // Color of the text contain in the object who have set this color
+  --ion-color-contrast: #ffffff;
+  --ion-color-contrast-rgb: 0,0,0;
+  --ion-color-shade: #e6e6e6;
+  --ion-color-tint: linear-gradient(160deg, #a9d5ff 0%, #a9d5ff 100%) !important;
+}
+
+.ion-color-ueo
+{
+  --ion-color-base: linear-gradient(160deg, #8dd490 0%, #8dd490 100%) !important;
+  --ion-color-base-rgb: 255,255,0;
+  // Color of the text contain in the object who have set this color
+  --ion-color-contrast: #ffffff;
+  --ion-color-contrast-rgb: 0,0,0;
+  --ion-color-shade: #e6e6e6;
+  --ion-color-tint: linear-gradient(160deg, #8dd490 0%, #8dd490 100%) !important;
+}
+
+.ion-color-annulation
+{
+  --ion-color-base: linear-gradient(160deg, #808080 0%, #808080 100%) !important;
+  --ion-color-base-rgb: 255,255,0;
+  // Color of the text contain in the object who have set this color
+  --ion-color-contrast: #ffffff;
+  --ion-color-contrast-rgb: 0,0,0;
+  --ion-color-shade: #e6e6e6;
+  --ion-color-tint: linear-gradient(160deg, #808080 0%, #808080 100%) !important;
+}
+
+.ion-color-evaluation
+{
+  --ion-color-base: linear-gradient(160deg, #ef5151 0%, #ef5151 100%) !important;
+  --ion-color-base-rgb: 255,255,0;
+  // Color of the text contain in the object who have set this color
+  --ion-color-contrast: #ffffff;
+  --ion-color-contrast-rgb: 0,0,0;
+  --ion-color-shade: #e6e6e6;
+  --ion-color-tint: linear-gradient(160deg, #ef5151 0%, #ef5151 100%) !important;
 }

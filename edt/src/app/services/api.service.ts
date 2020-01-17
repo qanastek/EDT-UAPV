@@ -2,6 +2,7 @@ import { diplomes } from './../interfaces/diplomes';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,6 @@ export class ApiService {
   public groupsSelected: any[] = []; // JSON des groupes choisis
   public urlSelected: string; // URL de l'emploi du temps
   public edtSelected: any; // L'emploi du temps des groupes selected
-
 
   /**
     Enseignants
@@ -49,9 +49,15 @@ export class ApiService {
   public salles: any;
   public salleEdt: any;
 
+  /**
+   * Loading modal
+   */
+  public loadingModal: any;
+
   constructor(
     private http: HttpClient,
-    public router: Router
+    public router: Router,
+    private loadingController: LoadingController
   ) { }
 
   /**
@@ -282,7 +288,7 @@ export class ApiService {
           borderColor = "#d1e8ff"; 
           textColor = "#1e90ff"; 
           break;
-      }      
+      }
 
       send.push({
         id: "",
@@ -309,6 +315,18 @@ export class ApiService {
     
     // return send.slice(0, 15);
     return send;
+  }
+
+  public async loading() {
+    this.loadingModal = await this.loadingController.create({
+      // spinner: null,
+      // duration: 5000,
+      message: "Récupération de l'EDT...",
+      // translucent: true,
+      cssClass: 'custom-class custom-loading'
+    });
+
+    return await this.loadingModal.present();
   }
 
 }

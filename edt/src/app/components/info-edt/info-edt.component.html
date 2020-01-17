@@ -2,11 +2,11 @@
 
   <div 
     style="
-      height: 80vh;
-      width: 90vw;
+      height: 55vh;
+      width: 75vw;
 
       position: absolute;
-      left: 47%;
+      left: 50vw;
       top: 40vh;
       margin-left: -150px;
       margin-top: -150px;
@@ -15,7 +15,7 @@
 
     <!-- Header -->
     <div
-      class="info-item"
+      class="{{ this.getCss(this.type) }}"
       style="
         text-align: center;
         color: #ffffff;
@@ -30,10 +30,11 @@
           font-weight: 600;
           margin-top: 0% !important;
           padding-top: 7%;
+          padding-bottom: 7%;
           text-transform: uppercase;
         "
       >
-        {{this.startTime | date:'HH:mm'}} - {{this.endTime | date:'HH:mm'}} / {{this.type}}
+        {{this.type || "Autre"}}
       </p>
     </div>
 
@@ -44,14 +45,18 @@
         padding-left: 6%;
         padding-right: 6%;
         padding-bottom: 4%;
-        height: 80%;
         text-align: left;
         border-bottom-right-radius: 25px;
         border-bottom-left-radius: 25px;
       "
     >
-      <p style="color: #ff3061; margin-top: 0%; padding-top: 6%;">
+      <p style="margin-top: 0%; padding-top: 6%;">
         Informations sur le cours:
+      </p>
+
+      <!-- Horraires -->
+      <p *ngIf="this.startTime && this.endTime">
+        <b>Horraires :</b> {{this.startTime | date:'HH:mm'}} - {{this.endTime | date:'HH:mm'}} 
       </p>
 
       <!-- Matière -->
@@ -87,7 +92,7 @@
         expand="full"
         shape="round"
         size="large"
-        color="info-item"
+        color="{{ this.getCss(this.type) }}"
         style="color: #804f00; padding-top: 3%;"
       >
         Fermer
