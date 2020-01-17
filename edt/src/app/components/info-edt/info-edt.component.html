@@ -89,31 +89,36 @@
       </p>
     
       <div>
-        <ion-row text-center>
-          
-          <ion-col>
-            <ion-fab-button size="small" (click)="alarmItem()" color="defaultInfo" float-left>
-              <ion-icon name="alarm"></ion-icon>
-            </ion-fab-button>
-            
-            <ion-fab-button size="small" (click)="rememberItem()" color="defaultInfo" float-left>
+        <ion-row text-center>   
+                 
+          <ion-col size="8">
+            <ion-button 
+              (click)="goBack()"
+              expand="full"
+              shape="round"
+              size="large"
+              color="{{ this.getCss() }}"
+              style="color: #804f00;"
+            >
+              Fermer
+            </ion-button>
+          </ion-col>   
+
+          <ion-col size="auto">
+            <ion-button 
+              (click)="rememberItem()"
+              expand="full"
+              shape="round"
+              size="large"
+              color="{{ this.getCss() }}"
+              style="color: #804f00;"
+            >
               <ion-icon name="calendar"></ion-icon>
-            </ion-fab-button>
+            </ion-button>
           </ion-col>
 
         </ion-row>
       </div>
-
-      <ion-button 
-        (click)="goBack()"
-        expand="full"
-        shape="round"
-        size="large"
-        color="{{ this.getCss() }}"
-        style="color: #804f00; padding-top: 3%;"
-      >
-        Fermer
-      </ion-button>
 
     </div>
 

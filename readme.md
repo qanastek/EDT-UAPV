@@ -29,6 +29,6 @@
 * https://stackblitz.com/edit/fullcalendar-angular-demo
 * https://github.com/mattlewis92/angular-calendar
 
-# New Visual Studio Shortcuts
+# Fix calendar issue
 
-* Write /** and press TAB | It's make a javadocs style comment with param and returns.
+* https://github.com/fullcalendar/fullcalendar-angular/issues/195

@@ -2,7 +2,7 @@ import { diplomes } from './../interfaces/diplomes';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, Platform } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -57,7 +57,8 @@ export class ApiService {
   constructor(
     private http: HttpClient,
     public router: Router,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private plt: Platform
   ) { }
 
   /**
@@ -253,8 +254,8 @@ export class ApiService {
     
   }
 
-  public loadCalendar(edt: any) {;
-    
+  public loadCalendar(edt: any) {
+
     var send = [];
     
     var color: string;

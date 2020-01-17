@@ -4,6 +4,8 @@
 
     <full-calendar
       id="calendar"
+      contentHeight="auto"
+      style="overflow: auto !important; height: auto !important;"
       [events]="this.API.loadCalendar(this.edt)"
       defaultView="timeGridWeek"
       [displayEventTime]="true"

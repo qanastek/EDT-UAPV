@@ -66,6 +66,11 @@ export class EdtPage implements OnInit {
         this.router.navigate(["formations"]);
         break;
     }
+
+    // setTimeout( function() {
+    //     window.dispatchEvent(new Event('resize'))
+    // }, 1);
+    
   }
 
   async presentModal(event) {

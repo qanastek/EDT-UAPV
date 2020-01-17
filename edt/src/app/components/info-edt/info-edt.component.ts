@@ -1,5 +1,6 @@
+import { Calendar } from '@ionic-native/calendar/ngx';
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -23,7 +24,9 @@ export class InfoEdtComponent implements OnInit {
   private backbuttonSubscription: Subscription;
 
   constructor(
-    public modalController: ModalController
+    public modalController: ModalController,
+    private calendar: Calendar,
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {}
@@ -59,11 +62,41 @@ export class InfoEdtComponent implements OnInit {
   rememberItem(): void {
     // Save in calendar
     // https://ionicframework.com/docs/enterprise/calendar
+
+    /**
+    * Create a event in the native calendar
+    */
+    this.calendar.createEvent(
+      this.matiere,
+      "Université d'Avignon",
+      this.salle.replace(/(\r\n|\n|\r)/gm, "") + " / " + this.type.replace(/(\r\n|\n|\r)/gm, ""),
+      this.startTime,
+      this.endTime
+    );
+
+    this.alertDone();
   }
 
-  alarmItem(): void {
-    // Save in calendar
-    // https://ionicframework.com/docs/enterprise/calendar
+  async alertDone() {
+    const alert = await this.alertController.create({
+      header: 'Cours enregistrer !',
+      // subHeader: 'Subtitle',
+      // message: 'This is an alert message.'
+      buttons: ['Ok']
+    });
+
+    await alert.present();
+  }
+
+  async alertFail() {
+    const alert = await this.alertController.create({
+      header: 'Enregistrement échouer !',
+      // subHeader: 'Subtitle',
+      // message: 'This is an alert message.'
+      buttons: ['Ok']
+    });
+
+    await alert.present();
   }
 
 }

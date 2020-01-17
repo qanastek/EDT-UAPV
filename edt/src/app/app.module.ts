@@ -16,6 +16,8 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 
+import { Calendar } from '@ionic-native/calendar/ngx';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -34,7 +36,8 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     SQLite,
-    SQLitePorter
+    SQLitePorter,
+    Calendar
   ],
   bootstrap: [AppComponent]
 })
