@@ -1,6 +1,7 @@
+import { FullCalendarComponent } from '@fullcalendar/angular';
 import { InfoEdtComponent } from './../components/info-edt/info-edt.component';
 import { ApiService } from './../services/api.service';
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 
@@ -16,6 +17,8 @@ import * as $ from 'jquery';
   styleUrls: ['./edt.page.scss'],
 })
 export class EdtPage implements OnInit {
+
+  @ViewChild('fullcalendar', { static: false }) fullcalendar: FullCalendarComponent;
 
   calendar = {
     currentDate: new Date(),
@@ -73,7 +76,16 @@ export class EdtPage implements OnInit {
     
   }
 
+  // public render() {
+  //   console.log("--------------------------------------Render Start");
+  //   let renderFullcalendar = this.fullcalendar.getApi();
+  //   console.log("--------------------------------------Render Middle");
+  //   renderFullcalendar.render();
+  //   console.log("--------------------------------------Render End");
+  // }
+
   async presentModal(event) {
+    $('#calendar').fullCalendar('render');
 
     var matiere = event.title.slice(0, event.title.indexOf("Enseignant"));
     var enseignant = event.title.slice(event.title.indexOf("Enseignant"), event.title.indexOf("TD"));
