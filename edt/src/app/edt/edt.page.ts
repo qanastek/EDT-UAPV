@@ -18,8 +18,6 @@ import * as $ from 'jquery';
 })
 export class EdtPage implements OnInit {
 
-  @ViewChild('fullcalendar', { static: false }) fullcalendar: FullCalendarComponent;
-
   calendar = {
     currentDate: new Date(),
     mode: 'dayGridWeek'
@@ -76,16 +74,7 @@ export class EdtPage implements OnInit {
     
   }
 
-  // public render() {
-  //   console.log("--------------------------------------Render Start");
-  //   let renderFullcalendar = this.fullcalendar.getApi();
-  //   console.log("--------------------------------------Render Middle");
-  //   renderFullcalendar.render();
-  //   console.log("--------------------------------------Render End");
-  // }
-
   async presentModal(event) {
-    $('#calendar').fullCalendar('render');
 
     var matiere = event.title.slice(0, event.title.indexOf("Enseignant"));
     var enseignant = event.title.slice(event.title.indexOf("Enseignant"), event.title.indexOf("TD"));
