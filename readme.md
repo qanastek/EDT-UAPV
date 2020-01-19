@@ -5,7 +5,7 @@ Allow to the Avignon University students to check their timetable on Android and
 Author:
 * Yanis Labrak
 
-![Preview](screenshots/Week.jpg)
+![Preview](screenshots/preview.png)
 
 ## Installation
 Here is the procedure to install this software :
