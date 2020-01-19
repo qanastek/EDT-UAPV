@@ -1,34 +1,39 @@
-# Emploi du temps pour l'université d'Avignon - V1
+# EDT - UAPV
 
-# Liste des requêtes à l'API de l'UAPV
+Allow to the Avignon University students to check their timetable on Android and IOS.
 
-* Statut du serveur: https://edt-api.univ-avignon.fr/app.php/api/isOpen
+Author:
+* Yanis Labrak
 
-- [x] Liste des Salles: https://edt-api.univ-avignon.fr/app.php/api/salles
-  - [x] EDT salle: https://edt-api.univ-avignon.fr/app.php/api/events_salle/CERI_STAT1
-- [x] Liste des UEO: https://edt-api.univ-avignon.fr/app.php/api/matieres/UEO
-  - [x] EDT: https://edt-api.univ-avignon.fr/app.php/api/events_matiere/T-U12-9208
-- [x] Liste des UE: https://edt-api.univ-avignon.fr/app.php/api/matieres/UE
-  - [x] EDT: https://edt-api.univ-avignon.fr/app.php/api/events_matiere/I-E05-5034
-- [x] Liste des Enseignants: https://edt-api.univ-avignon.fr/app.php/api/enseignants
-  - [x] EDT: https://edt-api.univ-avignon.fr/app.php/api/events_enseignant/709
+![Preview](screenshots/Week.jpg)
 
-- [x] Toutes les promotion: https://edt-api.univ-avignon.fr/app.php/api/elements
-- [x] Tout les groupe de cette promotion: https://edt-api.univ-avignon.fr/app.php/api/tdoptions/2-L3IN
-- [x] Emploi du temps de cette promotion (le filtre de groupe ce fait en local): https://edt-api.univ-avignon.fr/app.php/api/events_promotion/2-L3IN
-- [x] https://edt-api.univ-avignon.fr/app.php/api/events_tdoption/9756-9757-9758-9759-9761-9753-9754-9755
+## Installation
+Here is the procedure to install this software :
+1. npm install
 
-- [ ] Jeter un coup d'oeil à nebular
+## Use
+1. In order to use the software, you must have an internet connection
+2. You need to have all the tools and depencencies installed
+3. Run the software
+   1. ionic cordova run android --livereload --device --consolelogs
+4. Select your academic promotion directly or from the bookmarks section
+5. Click on the course and add the course to the Google Calendar by pressing the timetable icon
 
-## Packages sympas:
+## Dependencies
 
-* https://www.npmjs.com/package/ionic2-calendar
-* https://www.youtube.com/watch?v=uWhfwhN5IZc
+The project relies on the following libraries:
+* FullCalendar: The Angular version of the FullCalendar.JS library [Source](https://fullcalendar.io/docs/angular)
 
-* https://fullcalendar.io/docs/angular
-* https://stackblitz.com/edit/fullcalendar-angular-demo
-* https://github.com/mattlewis92/angular-calendar
+And the following services:
+* edt-api.univ-avignon.fr: This service was used for fetching the courses data needed for the calendar
 
-# Fix calendar issue
+## Development environement
+* Angular: [Source](https://angular.io/)
+* Ionic: [Source](https://ionicframework.com/)
+* Apache Cordova: [Source](https://cordova.apache.org/)
+* SQLite-porter: [Source](https://ionicframework.com/docs/native/sqlite-porter)
 
-* https://github.com/fullcalendar/fullcalendar-angular/issues/195
+## References
+During development, I use the following bibliographic resources:
+* [Ionic Documentation](https://ionicframework.com/docs): Its the offical Ionic documentation.
+* [Simon Grimm](https://www.youtube.com/user/saimon1924/videos): A nice Youtube channel where we can found everythings we need about Ionic.
