@@ -32,3 +32,10 @@
 # Fix calendar issue
 
 * https://github.com/fullcalendar/fullcalendar-angular/issues/195
+
+# Make APK
+
+> keytool -genkey -v -keystore my-release-key.keystore -alias qanastek -keyalg RSA -keysize 2048 -validity 10000
+> jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore app-release-unsigned.apk qanastek
+> cd C:\xampp2\htdocs\other_things\EDT-UAPV\edt\platforms\android\app\build\outputs\apk\release\
+> ./zipalign -v 4 "C:\xampp2\htdocs\other_things\EDT-UAPV\edt\platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk" "C:\xampp2\htdocs\other_things\EDT-UAPV\edt\platforms\android\app\build\outputs\apk\release\UAPV-EDT.apk"
